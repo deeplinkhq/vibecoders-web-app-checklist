@@ -12,9 +12,7 @@ Podklad: [ISTQB: Acceptance Testing, sekce 2.1 a 2.2](https://istqb.org/wp-conte
 
 ## Testy jako pojistka při práci s AI agentem
 
-- [ ] Změny vytvořené agentem mají zkontrolovaný diff vůči zadání. Vedlejší úpravy mohou změnit fungující části mimo požadovaný rozsah. *Ověření:* projdi `git diff` vůči výchozí revizi včetně konfigurace, závislostí a testů; u změn mimo zadání dohledávej zdůvodnění.
-
-- [ ] Když změna upravuje nebo odstraňuje existující test: změna očekávání má oporu ve změně požadavku nebo v doložené chybě testu. Zelený výsledek po oslabení kontroly neprokazuje opravu aplikace. *Ověření:* projdi diff testů, vynechané testy, odstraněné assertions a aktualizované snapshoty; každou změnu očekávaného chování porovnej se zadáním.
+- [ ] Když změna upravuje nebo odstraňuje existující test: změna očekávání má oporu ve změně požadavku nebo v doložené chybě testu. Zelený výsledek po oslabení kontroly neprokazuje opravu aplikace. *Ověření:* projdi diff testů a konfigurace kontrol, vynechané testy, odstraněné assertions, nové mocky, ignorované chyby a aktualizované snapshoty; každou změnu očekávaného chování porovnej se zadáním.
 
 - [ ] Když opravuješ reprodukovatelnou funkční chybu: existuje regresní test, který ji zachytí. Chrání před návratem stejné chyby při další úpravě. *Ověření:* dohledávej výsledek testu na chybné a opravené verzi; test má na chybné verzi selhat kvůli dané chybě a na opravené projít.
 
@@ -66,7 +64,7 @@ Podklad: [Playwright: rozlišení passed, flaky a failed](https://playwright.dev
 
 Podklad: [MDN: výběr prohlížečů a strategie testování](https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Testing/Testing_strategies).
 
-- [ ] Když mezi podporovaná zařízení patří telefony: kritické cesty jsou ověřené na skutečných telefonech zastupujících podporované mobilní platformy. Emulace viewportu nepokrývá celé chování telefonu. *Ověření (člověk):* na uvedeném telefonu projdi kritické cesty včetně zadávání přes softwarovou klávesnici; zaznamenej model, systém, prohlížeč a výsledek.
+- [ ] Když mezi podporovaná zařízení patří telefony: kritické cesty jsou ověřené na skutečných telefonech zastupujících podporované mobilní platformy. Emulace viewportu nepokrývá celé chování telefonu. *Ověření (člověk):* na uvedeném telefonu projdi kritické cesty včetně zadávání přes softwarovou klávesnici až po poslední pole a odeslání; zaznamenej model, systém, prohlížeč a výsledek.
 
 Podklady: [Chrome DevTools: omezení emulace zařízení](https://developer.chrome.com/docs/devtools/device-mode), [MDN: testování na skutečných zařízeních](https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Testing/Introduction).
 
@@ -75,8 +73,6 @@ Podklady: [Chrome DevTools: omezení emulace zařízení](https://developer.chro
 Podklad pro způsob simulace: [Chrome DevTools: omezení rychlosti sítě](https://developer.chrome.com/docs/devtools/device-mode). Volba profilu závisí na cílovém použití.
 
 ## Před spuštěním nebo vydáním změny
-
-- [ ] Vydávaná verze má úspěšné výsledky všech kontrol, které projekt označuje jako povinné pro vydání. Výsledek ze starší revize neověřuje poslední úpravy. *Ověření:* porovnej identifikaci vydávané revize s reporty testů a dalších povinných kontrol; ověř také vynechané testy a chyby potlačené konfigurací spouštění.
 
 - [ ] Kandidát na vydání prošel kontrolou v režimu odpovídajícím produkčnímu běhu. Vývojový server nemusí odhalit chybu sestavení nebo produkční konfigurace. *Ověření:* spusť dokumentovaný produkční build nebo ekvivalentní přípravu a smoke test výsledného artefaktu na zkušební adrese; ověř shodu testované a vydávané verze.
 

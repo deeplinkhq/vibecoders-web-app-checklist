@@ -28,7 +28,7 @@ Orientační práh je podnět k prověření. Překročení dolož konkrétním 
 
 - [ ] Obrázky nemají zbytečně velký přenos kvůli nevhodnému formátu nebo nedostatečné kompresi. U fotek prověř WebP nebo AVIF, u jednoduché vektorové grafiky SVG; samotná přípona úspornost nepotvrzuje. *Ověření:* projdi „Improve image delivery“ v Lighthouse a skutečné formáty souborů; odhad úspory alespoň 4 KiB na obrázek ber jako orientační diagnostický nález, výjimku dolož například potřebou bezeztrátového obsahu nebo výsledkem porovnání variant.
 
-- [ ] Obrázky, videa a vložené bloky mají před načtením rezervovaný prostor odpovídající výslednému rozložení. Dodatečné zvětšení bloku může posunout okolní obsah. *Ověření:* zkontroluj `width` a `height`, CSS `aspect-ratio` nebo jinou rezervaci místa; nálezy porovnej s diagnostikou příčin layout shiftů v Lighthouse.
+- [ ] Obrázky, videa a vložené bloky mají před načtením rezervovaný prostor odpovídající výslednému rozložení. Dodatečné zvětšení bloku může posunout okolní obsah. *Ověření:* zkontroluj `width` a `height`, CSS `aspect-ratio` nebo jinou rezervaci místa, u vícekrokového widgetu i změnu jeho výšky; nálezy porovnej s diagnostikou příčin layout shiftů v Lighthouse.
 
 - [ ] Když LCP tvoří obrázek: jeho načítání není odložené pomocí lazy loadingu. Odklad zdržuje zobrazení hlavního obsahu. *Ověření:* identifikuj LCP prvek v reportu a zkontroluj, že nepoužívá `loading="lazy"` ani ekvivalentní odklad v JavaScriptu.
 
@@ -80,7 +80,7 @@ Orientační práh je podnět k prověření. Překročení dolož konkrétním 
 
 - [ ] Když web načítá integrace třetích stran: každá má doložený aktuální účel. Opuštěná analytika, widget nebo experiment mohou dál načítat další kód. *Ověření:* sestav inventář z kódu a síťového záznamu včetně skriptů přidaných nepřímo; zahrň stav s aktivními integracemi po udělení souhlasu, nejasný účel označ jako „Otázka“.
 
-- [ ] Když vložený přehrávač, mapa nebo widget nejsou potřeba při otevření stránky: jejich plné načtení je odložené do přiblížení k viewportu nebo aktivace. Lehký náhled může zabránit předčasnému stažení celé integrace. *Ověření:* zkontroluj mechanismus odložení a síťový záznam; samotný vizuální placeholder bez odložení požadavků nestačí.
+- [ ] Když vložený přehrávač, mapa nebo widget nejsou potřeba při otevření stránky: jejich plné načtení je odložené do přiblížení k viewportu nebo aktivace. Lehký náhled může zabránit předčasnému stažení celé integrace; odložení nesmí zablokovat obsah potřebný k první hlavní akci. *Ověření:* zkontroluj mechanismus odložení a síťový záznam; samotný vizuální placeholder bez odložení požadavků nestačí.
 
 - [ ] Když třetí strana zajišťuje pouze doplňkovou funkci: její nedostupnost neblokuje zobrazení hlavního obsahu. Čekání na analytiku nebo chat nemá zadržet celou stránku. *Ověření (prohlížeč):* zablokuj požadavky integrace, znovu načti stránku a ověř zobrazení hlavního obsahu; porovnej také LCP a blokování hlavního vlákna s běžným načtením.
 

@@ -6,11 +6,9 @@ U kontrol nasazení a rollbacku vycházej z konfigurace, historie běhů a zázn
 
 ## Oddělená prostředí
 
-- [ ] Vývoj a test jsou oddělené od produkce. U aplikace mají oddělené prostředky a přístupová oprávnění, aby chyba při testování nezasáhla ostrý provoz. [Zdroj](https://pages.nist.gov/nccoe-devsecops/appendix-c.html) *Ověření:* z konfigurace sestav přehled prostředí a jejich připojených prostředků; porovnej adresy databází, úložišť, front a oprávnění použitých identit. Tajné hodnoty nevypisuj do reportu.
+- [ ] Vývoj a test jsou oddělené od produkce. U aplikace mají vývoj, testy i preview oddělené prostředky a přístupové údaje, aby chyba při testování ani kompromitovaný testovací projekt nezasáhly ostrý provoz. [Zdroj](https://pages.nist.gov/nccoe-devsecops/appendix-c.html) *Ověření:* z konfigurace sestav přehled prostředí a jejich připojených prostředků; porovnej adresy databází, úložišť, front a oprávnění použitých identit, zkontroluj také testovací a úklidové skripty. Tajné hodnoty nevypisuj do reportu.
 
-- [ ] Když aplikace pracuje s neveřejnými daty: testovací dataset obsahuje syntetická nebo anonymizovaná data. Kopie ostré databáze se skutečnými osobními údaji není bezpečný výchozí dataset pro testování. [Zdroj](https://github.com/OWASP/www-project-devsecops-verification-standard/blob/main/document/TEST-001-Security-Test-Management.md) *Ověření:* přečti generátory testovacích dat, importní skripty a postup přípravy datasetu; bez přístupu k datům nebo důkazu anonymizace označ „Ověř ručně“.
-
-- [ ] Když testovaná funkce provádí vnější akci: testovací prostředí používá testovací režim nebo zachycení této akce. Test nemá účtovat skutečnou platbu, obeslat zákazníky ani spustit ostrou integraci. [Zdroj](https://sre.google/workbook/canarying-releases/) *Ověření:* zkontroluj konfiguraci příslušných integrací a záznam testu; ověř testovací endpoint, účet nebo omezení příjemců podle typu akce.
+- [ ] Když testovaná funkce provádí vnější akci: testovací prostředí používá testovací režim nebo zachycení této akce. Test nemá účtovat skutečnou platbu, obeslat zákazníky ani spustit ostrou integraci. [Zdroj](https://sre.google/workbook/canarying-releases/) *Ověření:* zkontroluj konfiguraci příslušných integrací včetně úloh na pozadí a záznam testu; ověř testovací endpoint, účet nebo omezení příjemců podle typu akce.
 
 - [ ] Když zkušební nasazení obsahuje neveřejný obsah nebo funkce: přístup vyžaduje autentizaci nebo síťové omezení. Neodhadnutelná URL ani `noindex` nenahrazují řízení přístupu. [Zdroj](https://api-security.owasp.org/editions/2019/en/0xa9-improper-assets-management/) *Ověření:* bez přihlášení požádej přes `curl` o chráněnou stránku a přímo o její API nebo soubor; ověř, že se chráněný obsah nevrátí.
 
@@ -30,13 +28,9 @@ U kontrol nasazení a rollbacku vycházej z konfigurace, historie běhů a zázn
 
 - [ ] Produkční nasazení je zablokované při neúspěchu povinných automatických kontrol. Povinné kontroly odpovídají projektu, například sestavení, kontrola typů, validace nebo testy. [Zdroj](https://cheatsheetseries.owasp.org/cheatsheets/CI_CD_Security_Cheat_Sheet.html) *Ověření:* zkontroluj návaznosti úloh, podmínky nasazení a nastavení povinných kontrol; hledej ignorování návratového kódu a povolené pokračování po chybě.
 
-- [ ] Produkční nasazení lze spustit jen z určeného důvěryhodného zdroje změn. Cizí příspěvek ani libovolná větev nemají automaticky získat možnost nasazovat do produkce. [Zdroj](https://cheatsheetseries.owasp.org/cheatsheets/CI_CD_Security_Cheat_Sheet.html) *Ověření:* přečti spouštěče pipeline, omezení produkčního prostředí a oprávnění nasazovací identity; nastavení mimo repozitář ověř přes dostupné API, jinak označ „Ověř ručně“.
-
-- [ ] Kandidát na produkční nasazení má předem ověřené zkušební nasazení. Záznam ověření patří ke konkrétní verzi, která se má nasadit. [Zdroje](https://12factor.net/dev-prod-parity), [ověřování nasazení](https://sre.google/workbook/canarying-releases/). *Ověření:* spoj identifikátor commitu nebo artefaktu se zkušební URL a výsledky kontrol podle kategorie „Testování a spuštění“.
-
 - [ ] Nasazený release je dohledatelný ke zdrojové verzi, artefaktu a použité konfiguraci. Změna artefaktu nebo konfigurace vytváří nový identifikovatelný release. [Zdroj](https://12factor.net/build-release-run) *Ověření:* porovnej záznam nasazení, identifikátor commitu, identifikátor nebo hash artefaktu a revizi konfigurace; do reportu nezapisuj obsah tajných hodnot.
 
-- [ ] Produkce dostává artefakt, který prošel povinnými kontrolami. Když se kvůli produkční konfiguraci sestavuje znovu, kontroly se vztahují i na tento výsledný artefakt. [Zdroj](https://dsomm.owasp.org/mapping) *Ověření:* sleduj předání artefaktu mezi úlohami a porovnej jeho identifikátor nebo hash; u nového sestavení dohledávej výsledky kontrol tohoto sestavení.
+- [ ] Produkce dostává artefakt, který prošel povinnými kontrolami. Když se kvůli produkční konfiguraci sestavuje znovu, kontroly se vztahují i na tento výsledný artefakt. [Zdroj](https://dsomm.owasp.org/mapping) *Ověření:* sleduj předání artefaktu mezi úlohami a porovnej jeho identifikátor nebo hash; u nového sestavení dohledávej výsledky kontrol tohoto sestavení. Ověř také vynechané testy a chyby potlačené konfigurací spouštění.
 
 ## Vrácení předchozí verze
 
@@ -60,11 +54,9 @@ U kontrol nasazení a rollbacku vycházej z konfigurace, historie běhů a zázn
 
 ## HTTPS
 
-- [ ] Každý veřejně používaný HTTPS hostname má platný a důvěryhodný certifikát pro své jméno. Platí to také pro hostname, který pouze přesměrovává jinam, protože TLS spojení předchází HTTP přesměrování. [Zdroj](https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Security_Cheat_Sheet.html) *Ověření:* proveď požadavky přes `curl` bez vypnutí kontroly certifikátu; pomocí OpenSSL ověř jména, dobu platnosti a řetězec certifikátu.
+Platnost certifikátu a mixed content viz [Bezpečnost](08-bezpecnost.md).
 
 - [ ] Obnova certifikátu je automatizovaná a má doložený funkční mechanismus. Aktuálně platný certifikát nedokazuje, že se obnoví i příště. [Zdroj](https://letsencrypt.org/docs/integration-guide/) *Ověření:* zkontroluj konfiguraci spravované obnovy nebo plánovaného klienta a záznam úspěšné obnovy či podporované zkoušky; bez přístupu k nastavení označ „Ověř ručně“.
-
-- [ ] HTTPS stránky nenačítají prostředky přes nezabezpečené HTTP. Mixed content může být zablokovaný nebo znehodnotit ochranu stránky. [Zdroj](https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Security_Cheat_Sheet.html) *Ověření (prohlížeč):* projdi hlavní typy stránek a sleduj síťové požadavky i konzoli; zahrň dynamicky načítané obrázky, skripty, styly, vložený obsah a API požadavky.
 
 ## E-mailové DNS záznamy
 

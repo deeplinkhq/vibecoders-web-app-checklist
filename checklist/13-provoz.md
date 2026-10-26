@@ -64,8 +64,6 @@ Podklady: [NIST SP 800-61r3](https://nvlpubs.nist.gov/nistpubs/specialpublicatio
 
 - [ ] Když výpadek může způsobit významnou škodu: projekt má stanovený časový cíl obnovy provozu, RTO. *Ověření:* přečti schválenou hodnotu a porovnej ji s naměřenou délkou poslední zkoušky obnovy; bez stanoveného cíle polož otázku provozovateli.
 
-- [ ] Když projekt ukládá nenahraditelná data: má stanovenou přijatelnou ztrátu nejnovějších dat, RPO. *Ověření:* porovnej požadovanou hodnotu s intervaly a skutečným stavem použitelných záloh nebo jiného mechanismu obnovy podle kategorie „Databáze“.
-
 - [ ] Když projekt vyžaduje obnovu po závažném selhání: existuje záznam úspěšné zkoušky obnovy celé kritické funkce. Obnova samotné databáze neověřuje potřebnou konfiguraci, soubory a navazující služby. *Ověření:* zkontroluj scénář, datum, obnovenou verzi a výsledky funkčních kontrol v izolovaném prostředí.
 
 - [ ] Když incident zasahuje uživatele: je určený způsob informování, který zůstane použitelný i při výpadku aplikace. *Ověření:* ověř komunikační kanál, odpovědnou osobu a připravený postup aktualizace informací.

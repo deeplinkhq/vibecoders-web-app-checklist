@@ -8,8 +8,6 @@ Kontroluj skutečné schéma, oprávnění a provozní nastavení, nejen definic
 
 - [ ] Každý samostatně adresovaný záznam má jednoznačný identifikátor vynucený úložištěm. Duplicitní identita může způsobit změnu nebo smazání nesprávného záznamu. *Ověření:* přečti schéma a ověř primární klíč, unikátní identifikátor dokumentu nebo odpovídající mechanismus; v testovací databázi zkus vložit stejný identifikátor podruhé. [Datová omezení][constraints]
 
-- [ ] Povinná pole a přípustné hodnoty se vynucují mimo prohlížeč ve všech cestách zápisu. Kontrola formuláře nezastaví chybný import ani přímý API požadavek. *Ověření:* porovnej schéma a serverové validace s místy zápisu; přes API nebo databázového klienta v testovacím prostředí zkus chybějící povinnou hodnotu, nesprávný typ a hodnotu mimo povolený rozsah. [Datová omezení][constraints]
-
 - [ ] Když musí být obchodní hodnota jedinečná: jedinečnost platí i při souběžném zápisu. Samotné „nejdřív vyhledej, potom vlož“ může vytvořit duplicity. *Ověření:* najdi unikátní omezení nebo ekvivalentní atomický mechanismus; spusť souběžné pokusy o vytvoření stejné hodnoty a ověř, že vznikl nejvýše jeden platný záznam. Zkontroluj požadované chování pro prázdné hodnoty a velikost písmen. [Datová omezení][constraints], [Izolace transakcí][isolation]
 
 - [ ] Když data obsahují odkazy na jiné záznamy: vazby nemohou zůstat v nepovoleném stavu. Smazání rodiče nesmí nečekaně vytvořit sirotky ani odstranit navázaná data. *Ověření:* přečti cizí klíče nebo odpovídající serverový mechanismus; v testovacím prostředí zkus neexistující odkaz a smazání rodiče a porovnej výsledek s požadovaným chováním. [Datová omezení][constraints]
@@ -28,19 +26,13 @@ Kontroluj skutečné schéma, oprávnění a provozní nastavení, nejen definic
 
 - [ ] Bez přihlášení jsou dostupná pouze výslovně veřejná data a operace. Skrytá stránka ani veřejný klientský klíč nejsou přístupovým pravidlem. *Ověření:* bez session a s veřejnými klientskými údaji otestuj dostupné datové API včetně detailů, seznamů a exportů; pokusy o zápis prováděj nad testovacími daty. [Autorizace][authorization]
 
-- [ ] Když aplikace odděluje data uživatelů nebo organizací: běžný účet nemůže provést nepovolenou operaci nad cizími daty. Zákaz musí platit také při změně vlastníka nebo organizace v požadavku. *Ověření:* použij dva testovací účty s oddělenými daty; přes skutečnou aplikační cestu zkus cizí čtení, vložení, změnu a smazání. Ověř i povolenou operaci nad vlastními daty a při sdílení spojení zopakuj test po jejich opětovném použití. [Autorizace][authorization], [Izolace zákazníků][tenants]
-
 - [ ] Běžný provoz aplikace používá databázová oprávnění omezená na potřebné operace. Nemá administrátorský přístup ani právo měnit schéma, pokud to jeho funkce nevyžaduje. *Ověření:* zjisti skutečnou identitu provozního připojení a její efektivní oprávnění; odděl ji od identity pro migrace a správu. Když se izolace opírá o databázové politiky, ověř, že je provozní identita neobchází. [Zabezpečení databáze][dbsecurity], [Izolace zákazníků][tenants]
 
 ## Prostředí a testovací data
 
-- [ ] Vývoj, automatické testy a preview používají jiné databáze a přístupové údaje než produkce. Chybný test nebo reset pak nezasáhne ostrá data. *Ověření:* porovnej cílové databáze a efektivní oprávnění v konfiguraci jednotlivých prostředí bez vypsání tajných hodnot; zkontroluj také testovací a úklidové skripty. [Zabezpečení databáze][dbsecurity]
-
 - [ ] Testovací datové sady obsahují syntetická nebo skutečně anonymizovaná osobní data. Pouhé nahrazení jména nemusí zabránit identifikaci člověka z ostatních údajů. *Ověření:* projdi původ fixtures, seedů, dumpů a příloh; zkontroluj anonymizační postup a výsledek včetně volného textu. Neukládej zjištěné osobní údaje do reportu. [Testovací data][cnil]
 
 - [ ] Vývojové seedy nevytvářejí v produkci testovací účty ani ukázkové záznamy. Potřebná počáteční provozní data mají samostatný postup. *Ověření:* přečti příkazy nasazení a podmínky seedovacích skriptů; nad dostupným provozním inventářem ověř známé testovací účty a označení ukázkových dat. [Vývojové seedy][seeds]
-
-- [ ] Když vývojový AI agent může používat databázové nástroje: jeho výchozí oprávnění neumožňují produkční zápisy. Zákaz napsaný v promptu nenahrazuje omezení přístupu. *Ověření:* přečti konfiguraci nástrojů a efektivní oprávnění jejich identity; případná výjimka musí být omezená na konkrétní schválenou operaci a vynucená mimo model. [Zabezpečení AI agentů][agents]
 
 ## Verzované migrace a nasazení
 
@@ -99,7 +91,6 @@ Zdroje ověřené k 26. 10. 2026. Produktová dokumentace dokládá konkrétní 
 - [OWASP: Database Security Cheat Sheet][dbsecurity] - minimální oprávnění, oddělení prostředí a ochrana záloh.
 - [OWASP: Authorization Cheat Sheet][authorization] - výchozí zákaz, ověřování oprávnění a negativní testy.
 - [OWASP: Multi-Tenant Security Cheat Sheet][tenants] - izolace zákazníků, pokrytí pravidly a skutečná provozní identita.
-- [OWASP: AI Agent Security Cheat Sheet][agents] - omezení nástrojů a oprávnění vynucená mimo model.
 - [CNIL: Tester vos applications][cnil] - syntetická a anonymizovaná testovací data.
 - [PostgreSQL: Constraints][constraints] - identita, povinné hodnoty, jedinečnost a referenční integrita.
 - [PostgreSQL: Numeric Types][numeric] a [Date/Time Types][datetime] - přesnost částek a časová sémantika.
@@ -121,7 +112,6 @@ Zdroje ověřené k 26. 10. 2026. Produktová dokumentace dokládá konkrétní 
 [dbsecurity]: https://cheatsheetseries.owasp.org/cheatsheets/Database_Security_Cheat_Sheet.html
 [authorization]: https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html
 [tenants]: https://cheatsheetseries.owasp.org/cheatsheets/Multi_Tenant_Security_Cheat_Sheet.html
-[agents]: https://cheatsheetseries.owasp.org/cheatsheets/AI_Agent_Security_Cheat_Sheet.html
 [cnil]: https://www.cnil.fr/fr/tester-vos-applications
 [constraints]: https://www.postgresql.org/docs/current/ddl-constraints.html
 [numeric]: https://www.postgresql.org/docs/current/datatype-numeric.html

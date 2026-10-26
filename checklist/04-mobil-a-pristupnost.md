@@ -10,15 +10,13 @@ Kontroluj jednotlivé šablony stránek a hlavní uživatelské procesy. Zahrň 
 
 - [ ] Web neblokuje zvětšení obsahu. Zákaz zoomu zhoršuje čitelnost lidem se slabším zrakem. [WCAG 1.4.4 AA](https://www.w3.org/WAI/WCAG22/Understanding/resize-text.html). *Ověření:* zkontroluj viewport a obsluhu dotykových událostí; hledej zejména `user-scalable=no`, omezující `maximum-scale` a blokování gesta pro přiblížení.
 
-- [ ] Při šířce 320 CSS px se běžný obsah přeskupí bez ztráty informací a funkcí a bez nutnosti rolovat ve dvou směrech. Výjimka platí pro části vyžadující dvourozměrné rozložení, například mapy a datové tabulky, ne automaticky pro celou stránku. [WCAG 1.4.10 AA](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html). *Ověření (prohlížeč):* projdi stránku při šířce 320 CSS px a při 400% zoomu z výchozího viewportu širokého 1280 CSS px; zkontroluj také otevřené menu a dialogy. Samotné `overflow-x: hidden` není důkaz splnění.
+- [ ] Při šířce 320 CSS px se běžný obsah přeskupí bez ztráty informací a funkcí a bez nutnosti rolovat ve dvou směrech. Výjimka platí pro části vyžadující dvourozměrné rozložení, například mapy a datové tabulky, ne automaticky pro celou stránku. [WCAG 1.4.10 AA](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html). *Ověření (prohlížeč):* projdi stránku při šířce 320 CSS px a při 400% zoomu z výchozího viewportu širokého 1280 CSS px; zkontroluj také otevřené menu, dialogy a stavy vložených widgetů. Samotné `overflow-x: hidden` není důkaz splnění.
 
 - [ ] Text lze zvětšit na 200 % bez ztráty obsahu a funkcí. Požadavek se vztahuje i na text tlačítek a popisků; výjimkou jsou titulky a obrázky textu. [WCAG 1.4.4 AA](https://www.w3.org/WAI/WCAG22/Understanding/resize-text.html). *Ověření (prohlížeč):* zvětšuj obsah postupně až na 200 % a ověř ořezávání, překrývání a dostupnost ovládání.
 
 - [ ] Obsah zůstane použitelný po uživatelské změně rozestupů textu. Testovací hodnoty jsou výška řádku 1,5násobku velikosti písma, mezera za odstavcem 2násobku, rozestup písmen 0,12násobku a slov 0,16násobku; nejsou to povinné výchozí styly. [WCAG 1.4.12 AA](https://www.w3.org/WAI/WCAG22/Understanding/text-spacing.html). *Ověření (prohlížeč):* aplikuj všechny čtyři hodnoty současně uživatelským stylesheetem nebo bookmarkletem; zkontroluj text, menu, tlačítka a dialogy.
 
 - [ ] Web nevyžaduje konkrétní orientaci displeje, pokud není pro danou funkci nezbytná. Telefon může být upevněný a uživatel ho nemusí umět otočit. [WCAG 1.3.4 AA](https://www.w3.org/WAI/WCAG22/Understanding/orientation.html). *Ověření (prohlížeč):* projdi hlavní procesy na výšku i na šířku; zkontroluj také kód vynucující orientaci a překryvy typu „otoč telefon“.
-
-- [ ] Když web obsahuje vstupní pole: hlavní úlohu lze na podporovaném telefonu dokončit i s otevřenou softwarovou klávesnicí. Jde o praktickou kontrolu mobilního použití, kterou emulace zařízení plně nenahradí. [Omezení mobilní emulace](https://developer.chrome.com/docs/devtools/device-mode#limitations). *Ověření (člověk):* na reálném telefonu vyplň formulář včetně posledního pole a dokonči ho; ověř dostupnost potřebných tlačítek a zaznamenej zařízení a prohlížeč.
 
 ## Dotykové cíle a gesta
 
@@ -74,9 +72,9 @@ Kontroluj jednotlivé šablony stránek a hlavní uživatelské procesy. Zahrň 
 
 ## Klávesnice a fokus
 
-- [ ] Všechny funkce mají ovládání klávesnicí bez požadavku na přesné načasování stisků. Výjimkou jsou funkce, jejichž podstata závisí na dráze pohybu, například volné kreslení. [WCAG 2.1.1 A](https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html). *Ověření (prohlížeč):* dokonči hlavní procesy bez myši; používej Tab, Shift+Tab a klávesy odpovídající typu prvku, včetně šipek u složených komponent. Kontroluj skutečný výsledek akce.
+- [ ] Všechny funkce mají ovládání klávesnicí bez požadavku na přesné načasování stisků. Výjimkou jsou funkce, jejichž podstata závisí na dráze pohybu, například volné kreslení. [WCAG 2.1.1 A](https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html). *Ověření (prohlížeč):* dokonči hlavní procesy včetně formulářů a vložených widgetů, například výběru data, bez myši; používej Tab, Shift+Tab a klávesy odpovídající typu prvku, včetně šipek u složených komponent. Kontroluj skutečný výsledek akce.
 
-- [ ] Z každé komponenty lze odejít klávesnicí. Nestandardní způsob odchodu musí být předem vysvětlený. [WCAG 2.1.2 A](https://www.w3.org/WAI/WCAG22/Understanding/no-keyboard-trap.html). *Ověření (prohlížeč):* vstup do menu, editorů a vložených komponent a znovu je opusť; modální dialog není past, pokud ho lze klávesnicí zavřít.
+- [ ] Z každé komponenty lze odejít klávesnicí. Nestandardní způsob odchodu musí být předem vysvětlený. [WCAG 2.1.2 A](https://www.w3.org/WAI/WCAG22/Understanding/no-keyboard-trap.html). *Ověření (prohlížeč):* vstup do menu, editorů a vložených komponent, například kalendáře, přehrávače nebo mapy, a znovu je opusť; modální dialog není past, pokud ho lze klávesnicí zavřít.
 
 - [ ] Pořadí fokusu zachovává význam a ovladatelnost. Nemusí přesně kopírovat vizuální souřadnice, ale nesmí rozbíjet návaznost úlohy. [WCAG 2.4.3 A](https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html). *Ověření (prohlížeč):* zaznamenej průchod Tabem a Shift+Tabem na mobilním i desktopovém rozložení; prověř vlastní přesuny fokusu a kladné hodnoty `tabindex`.
 

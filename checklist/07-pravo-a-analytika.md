@@ -26,7 +26,7 @@ Právní stav ověřen k 26. 10. 2026. Rozlišuj zákonnou povinnost a doporuče
 
 - [ ] Když web zpracovává osobní údaje: existuje funkční postup pro žádosti o jejich zpřístupnění, opravu, výmaz a další použitelná práva. Odpověď se poskytuje bez zbytečného odkladu, nejpozději do jednoho měsíce; přípustné prodloužení o další dva měsíce se musí včas oznámit a odůvodnit. [Práva EDPB] *Ověření:* projdi kontaktní cestu, odpovědnosti a postup ověření totožnosti; na testovacím uživateli ověř dohledání údajů a přípravu odpovědi.
 
-- [ ] Když uživatel požádá o oprávněný výmaz: výmaz zahrnuje příslušné údaje u zpracovatelů a řeší jejich případné obnovení ze záloh. Údaje s jiným trvajícím právním důvodem se posuzují samostatně. [Práva EDPB], [Zpracovatelé EDPB] *Ověření:* na testovacím účtu projdi celý postup včetně externích systémů, retenčních výjimek a obnovy zálohy; samotné znepřístupnění účtu nestačí.
+- [ ] Když uživatel požádá o oprávněný výmaz: výmaz zahrnuje příslušné údaje v navázaných systémech, souborech a u zpracovatelů a řeší jejich případné obnovení ze záloh. Údaje s jiným trvajícím právním důvodem se posuzují samostatně. [Práva EDPB], [Zpracovatelé EDPB] *Ověření:* na testovacím účtu projdi celý postup včetně externích systémů, retenčních výjimek a obnovy zálohy; samotné znepřístupnění účtu ani příznak „smazáno“ nestačí.
 
 - [ ] Když web zpracovává osobní údaje: incidentní postup rozlišuje dokumentaci incidentu, ohlášení úřadu a informování dotčených lidí. Ohlášení příslušnému dozorovému úřadu se provádí bez zbytečného odkladu, pokud možno do 72 hodin od zjištění, ledaže je riziko pro práva a svobody nepravděpodobné; vysoké riziko může vyžadovat i informování lidí. [Incidenty EK] *Ověření:* zkontroluj postup, odpovědnou osobu, způsob posouzení rizika a evidenci rozhodnutí; ověř kontaktní cestu od zpracovatelů.
 
@@ -44,7 +44,7 @@ Právní stav ověřen k 26. 10. 2026. Rozlišuj zákonnou povinnost a doporuče
 
 - [ ] Když web používá pouze technologie spadající do zákonné výjimky: nevyžaduje kvůli nim souhlas. Výjimka se posuzuje podle nezbytnosti pro přenos nebo výslovně vyžádanou službu, nikoli podle názvu „technické“. [Cookies ÚOOÚ], [Technický rozsah EDPB] *Ověření:* u každé technologie zdokumentuj důvod výjimky; informační povinnost posuď zvlášť.
 
-- [ ] Když technologie vyžaduje souhlas: nezačne ukládat ani číst informace před jeho udělením. Nečinnost, zavření lišty ani odmítnutí nejsou souhlas. [Cookies ÚOOÚ] *Ověření (prohlížeč):* v čistém profilu zaznamenej požadavky a úložiště před volbou, po zavření a po odmítnutí; zahrň další stránky i vložený obsah.
+- [ ] Když technologie vyžaduje souhlas: nezačne ukládat ani číst informace před jeho udělením. Nečinnost, zavření lišty, odmítnutí ani pouhé odložené načtení při rolování nejsou souhlas. [Cookies ÚOOÚ] *Ověření (prohlížeč):* v čistém profilu zaznamenej požadavky a úložiště před volbou, po zavření a po odmítnutí; zahrň další stránky, vložený obsah i anti-spam ochranu.
 
 - [ ] Když web žádá o souhlas se sledováním: odmítnutí je dostupné ve stejné vrstvě jako přijetí a není vizuálně potlačené. [Cookies ÚOOÚ] *Ověření (prohlížeč):* porovnej první obrazovku, viditelnost ovládacích prvků a počet kroků k přijetí a odmítnutí.
 

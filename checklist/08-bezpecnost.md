@@ -8,13 +8,11 @@ Kontroluj nasazenou verzi i kód. U zamítnutého požadavku ověř, že nevrát
 
 Pravidla vycházejí z [OWASP Secrets Management](https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html). Oddělení přihlašovacích údajů prostředí doporučuje také [OWASP A02:2025](https://top10.owasp.org/2025/A02_2025-Security_Misconfiguration/).
 
-- [ ] Ve veřejných souborech a odpovědích nejsou tajné klíče ani přístupové údaje. Veřejný identifikátor nebo klíč určený výrobcem pro prohlížeč není sám o sobě tajemství. *Ověření:* prohledej výsledné HTML, JavaScript, source mapy a síťové odpovědi; účel nalezených klíčů ověř v dokumentaci jejich vydavatele.
+- [ ] Ve veřejných souborech a odpovědích nejsou tajné klíče ani přístupové údaje. Veřejný identifikátor nebo klíč určený výrobcem pro prohlížeč není sám o sobě tajemství. *Ověření:* prohledej výsledné HTML, JavaScript, source mapy a síťové odpovědi; účel nalezených klíčů ověř v dokumentaci jejich vydavatele; zvlášť hledej klíče k placeným AI modelům.
 
 - [ ] Repozitář ani dostupná historie Gitu neobsahují použitelná tajemství. Smazání souboru z aktuální verze neodstraní jeho historii. *Ověření:* spusť Gitleaks nad pracovními soubory i historií všech dostupných větví s redakcí hodnot; zkontroluj výjimky skeneru a úplnost historie.
 
 - [ ] Když aplikace potřebuje tajemství: získává je za běhu z neveřejné konfigurace nebo úložiště tajemství. Nejsou zapsaná ve zdrojovém kódu ani ve veřejném instalačním balíčku. *Ověření:* projdi načítání konfigurace, definice nasazení a výsledné artefakty.
-
-- [ ] Když používáš více prostředí: produkční tajemství nejsou použitá ve vývoji ani testech. Kompromitovaný testovací projekt nesmí otevřít produkci. *Ověření:* porovnej identifikátory přístupových údajů a jejich cílová prostředí bez vypisování hodnot.
 
 - [ ] Když aplikace používá klíč nebo servisní účet: jeho oprávnění odpovídají potřebným operacím. Klíč pro čtení nepotřebuje správu účtů ani mazání dat. *Ověření:* porovnej skutečné volání služeb s přidělenými rolemi a scopes; nedostupná nastavení vypiš k ručnímu ověření.
 
@@ -34,7 +32,7 @@ Podkladem jsou [OWASP Software Supply Chain Security](https://cheatsheetseries.o
 
 - [ ] Když projekt používá runtime nebo knihovny: bezpečnostní aktualizace použitých verzí jsou dostupné. Opuštěná kritická komponenta vyžaduje náhradu nebo doloženou údržbu. *Ověření:* porovnej nasazené verze s oficiálními informacemi o podpoře a bezpečnostními advisories; uveď datum kontroly.
 
-- [ ] Když projekt používá CI/CD: nedůvěryhodný příspěvek nemůže získat produkční tajemství ani oprávnění k nasazení. Rizikem jsou také změny build skriptů a konfigurace pipeline. *Ověření:* projdi spouštěcí události, hranice důvěry, oprávnění jobů a dostupnost tajemství pro externí příspěvky.
+- [ ] Když projekt používá CI/CD: nedůvěryhodný příspěvek ani libovolná větev nemůže získat produkční tajemství ani oprávnění k nasazení. Rizikem jsou také změny build skriptů a konfigurace pipeline. *Ověření:* projdi spouštěcí události, hranice důvěry, omezení produkčního prostředí, oprávnění jobů a dostupnost tajemství pro externí příspěvky.
 
 - [ ] Když stránka načítá neměnný skript nebo stylesheet z cizího originu: ověřuje jeho integritu pomocí SRI nebo používá vlastní prověřenou kopii. U průběžně měněných integrací musí být výjimka konkrétně zdůvodněná. *Ověření:* projdi externí zdroje, atributy `integrity` a případně `crossorigin`; porovnej hash se skutečným obsahem. Podklad: [OWASP Third Party JavaScript Management](https://cheatsheetseries.owasp.org/cheatsheets/Third_Party_Javascript_Management_Cheat_Sheet.html).
 
@@ -48,7 +46,7 @@ Pravidla odpovídají [OWASP Transport Layer Security](https://cheatsheetseries.
 
 - [ ] Server nepovoluje SSL ani TLS 1.0 a 1.1. Preferuje TLS 1.3, TLS 1.2 může zůstat kvůli kompatibilitě. *Ověření:* spusť `testssl.sh` nebo SSLyze a zkontroluj povolené protokoly a slabé šifrovací sady.
 
-- [ ] Stránka přes HTTPS nenačítá zdroje přes HTTP. Týká se také požadavků vytvářených JavaScriptem. *Ověření (prohlížeč):* projdi hlavní stránky a funkce; zkontroluj síťové požadavky a hlášení mixed content.
+- [ ] Stránka přes HTTPS nenačítá zdroje přes HTTP. Týká se také požadavků vytvářených JavaScriptem a vloženého obsahu. *Ověření (prohlížeč):* projdi hlavní stránky a funkce; zkontroluj síťové požadavky a hlášení mixed content.
 
 ### Bezpečnostní hlavičky
 
@@ -100,13 +98,13 @@ Podkladem jsou [NIST SP 800-63B-4](https://pages.nist.gov/800-63-4/sp800-63b.htm
 
 - [ ] Když aplikace ověřuje přihlášení nebo obnovu účtu: server omezuje neúspěšné pokusy. Ochrana účtu nesmí záviset pouze na IP adrese útočníka. *Ověření:* najdi nastavený limit, časové okno a reakci po překročení; v testu ověř vynucení také při změně zdrojové IP.
 
-- [ ] Když aplikace nabízí přihlášení nebo reset hesla: odpovědi neprozrazují existenci účtu. Rozdíl může být v textu, HTTP stavu i zjevně odlišném zpracování požadavku. *Ověření:* porovnej odpovědi a větvení kódu pro existující a neexistující testovací účet.
+- [ ] Když aplikace nabízí přihlášení nebo reset hesla: odpovědi neprozrazují existenci účtu. Rozdíl může být v textu, HTTP stavu i zjevně odlišném zpracování požadavku. *Ověření:* porovnej odpovědi, opakovaně měřenou dobu odpovědi a větvení kódu pro existující a neexistující testovací účet.
 
 - [ ] Když aplikace má administrátorské nebo jiné vysoce privilegované účty: vyžaduje pro ně MFA. Alternativní přihlašovací cesta nesmí druhý faktor obejít. *Ověření:* projdi všechny způsoby přihlášení a zkus přístup k privilegované funkci před dokončením MFA.
 
-- [ ] Když uživatel mění heslo, přihlašovací e-mail nebo MFA: aplikace vyžaduje opětovné ověření identity. Samotná dlouho otevřená relace nestačí. *Ověření:* zavolej příslušný endpoint bez nového ověření a zkontroluj ochranu i mimo uživatelské rozhraní.
+- [ ] Když uživatel mění heslo, přihlašovací e-mail či MFA nebo maže účet: aplikace vyžaduje opětovné ověření identity. Samotná dlouho otevřená relace nestačí. *Ověření:* zavolej příslušný endpoint bez nového ověření a zkontroluj ochranu i mimo uživatelské rozhraní.
 
-- [ ] Když aplikace používá obnovovací nebo přihlašovací token: token je nepředvídatelný a časově omezený. Univerzální doba platnosti neexistuje, musí být zvolená podle účelu a rizika. *Ověření:* zkontroluj kryptografický generátor, vazbu tokenu na účet a účel a serverové odmítnutí po expiraci.
+- [ ] Když aplikace používá ověřovací, obnovovací nebo přihlašovací token: token je nepředvídatelný a časově omezený. Univerzální doba platnosti neexistuje, musí být zvolená podle účelu a rizika. *Ověření:* zkontroluj kryptografický generátor, vazbu tokenu na účet a účel a serverové odmítnutí po expiraci.
 
 - [ ] Když aplikace používá jednorázový obnovovací nebo přihlašovací token: po úspěšném použití ho nelze použít znovu. *Ověření:* zopakuj použití stejného testovacího tokenu; zkontroluj atomické zneplatnění také při souběžných požadavcích.
 
@@ -120,7 +118,7 @@ Pravidla relací vycházejí z [OWASP Session Management](https://cheatsheetseri
 
 - [ ] Když se uživatel přihlásí nebo zvýší oprávnění: aplikace obnoví identifikátor relace. Předem známá relace nesmí získat nová oprávnění. *Ověření:* porovnej relaci před a po přihlášení a vyzkoušej původní identifikátor.
 
-- [ ] Když aplikace má přihlášení: server vynucuje konečnou dobu platnosti relace a pravidla neaktivity. Hodnoty odpovídají citlivosti aplikace. *Ověření:* zkontroluj timeouty a v testu ověř odmítnutí expirované relace bez závislosti na časovači v prohlížeči.
+- [ ] Když aplikace má přihlášení: server vynucuje konečnou dobu platnosti relace a pravidla neaktivity. Hodnoty odpovídají citlivosti aplikace a platí i pro obnovování tokenů. *Ověření:* zkontroluj timeouty a v testu ověř odmítnutí expirované relace bez závislosti na časovači v prohlížeči.
 
 - [ ] Když se uživatel odhlásí: původní relace přestane poskytovat chráněný přístup. Vymazání cookie nebo tlačítka v prohlížeči nestačí. *Ověření:* po odhlášení zopakuj chráněný požadavek s původním cookie nebo tokenem; zahrň refresh token.
 
@@ -132,13 +130,13 @@ Pravidla relací vycházejí z [OWASP Session Management](https://cheatsheetseri
 
 Podkladem jsou [OWASP Authorization](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html), [Mass Assignment](https://cheatsheetseries.owasp.org/cheatsheets/Mass_Assignment_Cheat_Sheet.html) a [A10:2025](https://top10.owasp.org/2025/A10_2025-Mishandling_of_Exceptional_Conditions/).
 
-- [ ] Když aplikace poskytuje neveřejná data nebo akce: server kontroluje oprávnění při každém požadavku. Skryté tlačítko, klientský redirect ani CORS nejsou autorizace. *Ověření:* sestav seznam chráněných endpointů a zavolej je přímo bez přihlášení.
+- [ ] Když aplikace poskytuje neveřejná data nebo akce: server kontroluje oprávnění při každém požadavku. Skryté tlačítko, klientský redirect ani CORS nejsou autorizace. *Ověření:* sestav seznam chráněných endpointů včetně alternativních cest a zavolej je přímo bez přihlášení i bez potřebného oprávnění; bez výslovného povolení musí server přístup zamítnout.
 
-- [ ] Když aplikace odděluje data uživatelů nebo organizací: změna identifikátoru neumožní přístup k cizímu objektu. Platí pro čtení, změnu, mazání, export i soubory. *Ověření:* použij dva testovací účty a zaměň ID v cestě, query i těle požadavku; u organizací ověř také hranici tenantů.
+- [ ] Když aplikace odděluje data uživatelů nebo organizací: změna identifikátoru neumožní přístup k cizímu objektu. Platí pro čtení, vložení, změnu, mazání, export, hromadné operace i soubory. *Ověření:* použij dva testovací účty a zaměň ID v cestě, query i těle požadavku; u organizací ověř také hranici tenantů a při sdílení databázových spojení test zopakuj po jejich opětovném použití.
 
 - [ ] Když aplikace rozlišuje role: nižší role nemůže provést privilegovanou operaci. Server odvozuje roli z důvěryhodného zdroje. *Ověření:* s běžným účtem přímo zavolej administrátorské endpointy a pozměň klientské údaje o roli.
 
-- [ ] Když endpoint ukládá objekt z uživatelských dat: přijímá jen pole, která smí volající měnit. Hromadné přiřazení nesmí změnit vlastníka, roli nebo stav zaplacení. *Ověření:* zkontroluj seznam povolených polí a přidej do testovacího požadavku citlivé pole.
+- [ ] Když endpoint ukládá objekt z uživatelských dat: přijímá jen pole, která smí volající měnit. Hromadné přiřazení nesmí změnit vlastníka, roli, organizaci nebo stav zaplacení. *Ověření:* zkontroluj seznam povolených polí a přidej citlivé pole do testovacích registračních i aktualizačních požadavků.
 
 - [ ] Když nelze ověřit identitu nebo oprávnění: chráněná operace se neprovede. Výjimka nebo nedostupná ověřovací služba nesmí přístup povolit. *Ověření:* projdi chybové větve a v testu simuluj selhání ověření.
 
@@ -146,7 +144,7 @@ Podkladem jsou [OWASP Authorization](https://cheatsheetseries.owasp.org/cheatshe
 
 Podkladem jsou [OWASP Input Validation](https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html), [SQL Injection Prevention](https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html), [XSS Prevention](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html) a [CSRF Prevention](https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html).
 
-- [ ] Když aplikace přijímá vstup: server ověřuje jeho strukturu a povolené hodnoty před použitím. Kontroluje i rozsahy, délky a vnořené položky. *Ověření:* obejdi formulář a odešli chybějící pole, nesprávný typ a hodnoty mimo povolené hranice.
+- [ ] Když aplikace přijímá vstup: server ověřuje jeho strukturu a povolené hodnoty před použitím. Kontroluje i rozsahy, délky, vnořené položky a kombinace souvisejících polí ve všech cestách zápisu včetně importů. *Ověření:* obejdi formulář a odešli chybějící pole, nesprávný typ a hodnoty mimo povolené hranice a neplatnou kombinaci polí; backend je musí odmítnout bez provedení operace.
 
 - [ ] Když vstup ovlivňuje databázový dotaz: data se předávají odděleně od struktury dotazu. Dynamické názvy polí a řazení vybírá server z povoleného seznamu. *Ověření:* projdi konstrukci dotazů, včetně raw dotazů a uložených procedur; hledej skládání příkazů z nedůvěryhodného vstupu.
 
@@ -160,7 +158,7 @@ Podkladem jsou [OWASP Input Validation](https://cheatsheetseries.owasp.org/cheat
 
 - [ ] Když API zpřístupňuje neveřejné odpovědi jinému originu: CORS povoluje pouze zamýšlené originy. Nepřebírá libovolnou hodnotu `Origin`. *Ověření:* přes `curl` porovnej odpovědi a preflight pro povolený a cizí origin; veřejná API posuzuj podle zamýšlené dostupnosti. Podklad: [OWASP REST Security](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html).
 
-- [ ] Když veřejná funkce spotřebovává omezené nebo placené zdroje: server vynucuje kvótu nebo rate limit. Týká se například registrací, e-mailů, exportů a náročných výpočtů. *Ověření:* zkontroluj limit a jeho rozsah; v testovacím prostředí ověř odmítnutí nad limitem. Podklad: [OWASP A10:2025](https://top10.owasp.org/2025/A10_2025-Mishandling_of_Exceptional_Conditions/).
+- [ ] Když veřejná funkce spotřebovává omezené nebo placené zdroje: server vynucuje kvótu nebo rate limit. Týká se například veřejných formulářů, registrací, e-mailů, exportů a náročných výpočtů; honeypot ani minimální doba vyplnění limit nenahrazují. *Ověření:* zkontroluj limit a jeho rozsah; v testovacím prostředí ověř odmítnutí nad limitem. Podklad: [OWASP A10:2025](https://top10.owasp.org/2025/A10_2025-Mishandling_of_Exceptional_Conditions/).
 
 ### Podmíněné integrační a souborové funkce
 
@@ -174,7 +172,7 @@ Podkladem jsou [OWASP Input Validation](https://cheatsheetseries.owasp.org/cheat
 
 - [ ] Když aplikace poskytuje uživatelské soubory: nepovažuje jejich obsah za důvěryhodný kód aplikace. Aktivní obsah odmítá, bezpečně převádí nebo odděluje od originu aplikace. *Ověření:* zkontroluj způsob servírování, MIME typy a `Content-Disposition`; ověř zacházení s HTML a SVG. Podkladem souborových kontrol je [OWASP File Upload](https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html).
 
-- [ ] Když aplikace přijímá webhook: ověřuje jeho pravost před provedením akce. Neznámá URL ani IP adresa samy nepotvrzují odesílatele. *Ověření:* zkontroluj ověření podpisu nebo autentizace podle protokolu odesílatele; požadavek bez důkazu nebo s pozměněným tělem nesmí provést změnu. Podklad: [OWASP Webhook Security](https://cheatsheetseries.owasp.org/cheatsheets/Webhook_Security_Cheat_Sheet.html).
+- [ ] Když aplikace přijímá webhook, například platební: ověřuje jeho pravost před provedením akce. Neznámá URL ani IP adresa samy nepotvrzují odesílatele. *Ověření:* zkontroluj ověření podpisu nebo autentizace podle protokolu odesílatele; požadavek bez důkazu nebo s pozměněným tělem nesmí provést změnu. Podklad: [OWASP Webhook Security](https://cheatsheetseries.owasp.org/cheatsheets/Webhook_Security_Cheat_Sheet.html).
 
 - [ ] Když aplikace přesměrovává podle uživatelského vstupu: cílová adresa odpovídá povolenému seznamu nebo bezpečně ověřené místní cestě. Jinak může důvěryhodná doména sloužit k phishingu. *Ověření:* otestuj absolutní cizí URL, adresu začínající `//` a jejich zakódované varianty. Podklad: [OWASP Unvalidated Redirects](https://cheatsheetseries.owasp.org/cheatsheets/Unvalidated_Redirects_and_Forwards_Cheat_Sheet.html).
 

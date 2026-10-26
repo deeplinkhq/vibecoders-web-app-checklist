@@ -4,8 +4,6 @@
 
 ## Pole a instrukce
 
-- [ ] Každé požadované pole má doložitelný účel v daném procesu. Zbytečné údaje prodlužují vyplňování a zvyšují množství sbíraných dat. *Ověření:* porovnej pole s jejich použitím v kódu a navazujícím procesu; u nejasného účelu polož otázku provozovateli.
-
 - [ ] Každé pole má srozumitelný popisek propojený s ovládacím prvkem. U běžných formulářových polí je popisek viditelný i po vyplnění; placeholder ho nenahrazuje. *Ověření:* zkontroluj vazbu `label` a pole nebo odpovídající přístupné pojmenování; pomocí axe vyhledej chybějící popisky a neplatné vazby.
 
 - [ ] Když jednotlivé volby dávají smysl až se společnou otázkou: skupina má programově dostupný název. Samostatné popisky „Ano“ a „Ne“ bez otázky nestačí. *Ověření:* zkontroluj například `fieldset` s `legend` nebo odpovídající pojmenovanou skupinu v accessibility tree.
@@ -20,19 +18,13 @@
 
 ## Ovládání formulářů a widgetů
 
-- [ ] Formulář i interaktivní vložený obsah jde obsloužit klávesnicí. To zahrnuje výběr data, nabídky, přepínání kroků a odeslání. *Ověření (prohlížeč):* dokonči proces bez myši pomocí Tabu, Shift+Tabu, šipek, Enteru a mezerníku podle typu ovládacího prvku.
-
-- [ ] Z formuláře ani vloženého obsahu nevzniká past pro klávesnici. U modálního dialogu existuje dostupný způsob zavření. *Ověření (prohlížeč):* vstup klávesnicí do kalendáře, přehrávače, mapy a dalších widgetů a ověř návrat k obsahu stránky; případná nestandardní klávesa pro opuštění musí být vysvětlená.
-
-- [ ] Když používáš vlastní formulářový ovládací prvek: jeho role a aktuální stav jsou dostupné asistivním technologiím. Vizuálně vybraná nebo rozbalená položka musí mít odpovídající programový stav. *Ověření (prohlížeč):* v accessibility tree zkontroluj roli, hodnotu a změny stavů, například `expanded`, `selected` nebo `checked`.
-
 - [ ] Když proces potřebuje údaj zadaný v předchozím kroku: nabídne ho předvyplněný nebo k výběru. Výjimkou je nezbytné opakování, bezpečnost nebo údaj, který už není platný. *Ověření (prohlížeč):* projdi všechny kroky včetně návratu zpět a ověř, že stejné platné údaje nemusíš znovu ručně opisovat.
 
 - [ ] Když formulář omezuje dobu vyplňování: splňuje některou možnost WCAG 2.2.1. Limit jde předem vypnout, předem nastavit alespoň na desetinásobek výchozí doby, nebo prodloužit jednoduchou akcí s nejméně 20 sekundami na reakci a alespoň deseti prodlouženími; výjimkou je nezbytný limit, neoddělitelná událost v reálném čase nebo limit delší než 20 hodin. *Ověření:* zkontroluj časovače a expiraci na klientu i serveru a testem s řízeným časem ověř vybranou možnost; případnou výjimku dolož.
 
 ## Validace a oprava chyb
 
-- [ ] Pravidla vstupních dat vynucuje backend i při obejití formuláře. Kontrola pouze v prohlížeči nezabrání podání neplatných dat přímo na endpoint. *Ověření:* integračním testem nebo HTTP klientem odešli chybějící povinnou hodnotu, neplatný typ, hodnotu mimo povolený rozsah a neplatnou kombinaci souvisejících polí; backend je musí odmítnout bez provedení zamýšlené operace.
+Serverová validace vstupů viz [Bezpečnost](08-bezpecnost.md).
 
 - [ ] Validace přijímá platné údaje očekávané cílové skupiny. Neodmítá jméno kvůli diakritice či apostrofu ani podporovaný telefonní formát kvůli mezerám. *Ověření:* projdi validační pravidla a otestuj reprezentativní platné varianty; omezení na konkrétní zemi nebo formát musí odpovídat skutečnému účelu formuláře.
 
@@ -48,8 +40,6 @@
 
 - [ ] Během odesílání je zřejmé, že požadavek probíhá, a po jeho skončení je zřejmý výsledek. Samotná animace bez sdělení stavu nestačí. *Ověření (prohlížeč):* zpomal odpověď endpointu a projdi čekání, úspěch i chybu.
 
-- [ ] Když se stav odesílání mění bez načtení nové stránky a bez přesunu fokusu: změna je programově oznamovaná. Použij odpovídající stavovou oblast podle WCAG 4.1.3. *Ověření:* zkontroluj implementaci například `role="status"` nebo vhodné live region a změny jejich obsahu ve všech větvích odesílání.
-
 - [ ] Hláška o úspěchu odpovídá skutečně potvrzenému výsledku backendu. Přijetí požadavku ke zpracování není potvrzení doručeného e-mailu ani dokončené rezervace. *Ověření:* sleduj podmínku zobrazení hlášky a u testovacího podání ji porovnej s odpovědí API a výsledným záznamem nebo přijatou úlohou; HTTP 202 posuzuj jako přijetí ke zpracování.
 
 - [ ] Selhání komunikace nebo backendu nevede k falešnému úspěchu ani nekonečnému čekání. Při neznámém výsledku po přerušení spojení hláška netvrdí, že podání určitě nevzniklo. *Ověření (prohlížeč):* otestuj offline stav před odesláním, přerušení během přenosu, HTTP 4xx, HTTP 5xx a neodpovídající endpoint; porovnej chování s nastaveným timeoutem.
@@ -58,13 +48,11 @@
 
 - [ ] Když opakované podání může vytvořit duplicitní rezervaci, objednávku nebo jinou škodlivou operaci: backend umí stejné podání bezpečně rozpoznat. Vypnutí tlačítka v prohlížeči samo nestačí. *Ověření:* integračním testem zopakuj stejné podání i po simulované ztrátě odpovědi a ověř jediný obchodní výsledek.
 
-- [ ] Potvrzení vysvětluje, co bylo přijato a co bude následovat. Když existuje identifikátor podání nebo provozovatel slíbil termín odpovědi, potvrzení je obsahuje. *Ověření:* porovnej potvrzovací text a šablony s procesem a údaji vracenými backendem; nedoplňuj neověřenou lhůtu odpovědi.
-
 - [ ] Když formulář nebo vložený widget posílá e-mail: doručení je ověřené z nasazeného webu až do cílové schránky. Potvrzení od odesílacího systému samo nedokazuje přítomnost zprávy ve schránce. *Ověření (člověk):* bez přihlášení provozovatele odešli označené testovací podání a v cílové schránce dohledáš stejný obsah; když proces slibuje potvrzení návštěvníkovi, ověř i jeho doručení.
 
 ## Ochrana proti spamu
 
-- [ ] Když formulář veřejně přijímá podání: má serverově vynucené omezení jejich četnosti. Limit odpovídá riziku a běžnému provozu; samotný honeypot ani minimální doba vyplnění ho nenahrazují. *Ověření:* najdi limit, jeho časové okno a způsob rozlišení požadavků; v izolovaném testu ověř podání pod limitem a nad ním i při přímém volání endpointu.
+Serverový limit četnosti podání viz [Bezpečnost](08-bezpecnost.md).
 
 - [ ] Když odeslání vyžaduje anti-bot token: jeho platnost kontroluje backend. Pouhá přítomnost widgetu nebo tokenu v požadavku není důkaz úspěšné kontroly. *Ověření:* testem endpointu ověř odmítnutí chybějícího, neplatného a podle použitého protokolu expirovaného či opakovaně použitého tokenu.
 
@@ -74,19 +62,13 @@
 
 ## Vložené mapy, kalendáře a další widgety
 
+Rezervace prostoru a odložené načítání viz [Rychlost](03-rychlost.md), souhlas před načtením viz [Právo a analytika](07-pravo-a-analytika.md).
+
 - [ ] Když je obsah vložený přes iframe: rám má výstižný přístupný název. Název rozlišuje například mapu provozovny od rezervačního kalendáře. *Ověření:* projdi `iframe` v DOM a jejich `title` nebo jiné přístupné pojmenování; zkontroluj i rámy vložené dodatečně skriptem.
-
-- [ ] Vložený obsah při šířce 320 CSS px nezpůsobuje ztrátu ovládání ani vodorovné rolování celé stránky. Nezbytný dvourozměrný obsah, například mapa, může mít vlastní posouvání podle výjimky WCAG 1.4.10. *Ověření (prohlížeč):* při šířce 320 CSS px otevři i další stavy widgetu a zkontroluj oříznutí polí, potvrzení a ovládacích prvků.
-
-- [ ] Pro vložený obsah je před načtením rezervovaný odpovídající prostor. Rozměry nebo poměr stran nesmí po načtení odsunout okolní obsah. *Ověření (prohlížeč):* zpomal načítání a v záznamu změn rozložení zkontroluj kontejner před načtením i po něm; ověř i změnu výšky vícekrokového widgetu.
-
-- [ ] Když vložený obsah není potřeba v úvodním zobrazení: jeho nákladné zdroje se načítají odloženě. Odložení nesmí zablokovat obsah potřebný k první hlavní akci. *Ověření (prohlížeč):* v síťovém záznamu porovnej načítání před přiblížením k widgetu a po něm; zkontroluj například lazy loading nebo načtení po aktivaci.
 
 - [ ] Podstatná informace nebo akce zůstává dostupná i při nenačtení embedu. U mapy to může být textová adresa, u rezervace funkční samostatná stránka nebo náhradní kontakt. *Ověření (prohlížeč):* zablokuj domény widgetu a ověř dostupnost alternativy mimo jeho rám; samotnou událost `load` iframe nepovažuj za důkaz funkčnosti.
 
 - [ ] Když widget závisí na cookies nebo úložišti třetí strany: při jejich blokování funguje nebo nabídne použitelnou alternativní cestu. Návštěvník nesmí zůstat v neřešitelné přihlašovací či potvrzovací smyčce. *Ověření (prohlížeč):* v čisté relaci se zapnutým blokováním cookies třetích stran projdi celý proces včetně přesměrování; zaznamenej prohlížeč, verzi a nastavení.
-
-- [ ] Když vložený obsah nebo anti-spam ochrana používá technologii vyžadující předchozí souhlas: aktivuje se až po jeho udělení. Pouhé odložené načtení při rolování souhlas nenahrazuje, stav pravidel pro ČR 10/2026. *Ověření (prohlížeč):* v čisté relaci porovnej síťové požadavky a úložiště před volbou, po odmítnutí a po souhlasu; právní zařazení ověř podle kategorie 07.
 
 - [ ] Když kalendář nebo rezervace pracuje s konkrétním časem: widget a potvrzení označují stejný okamžik. Převod mezi časovými zónami nesmí změnit skutečný termín. *Ověření (prohlížeč):* porovnej vybraný termín s potvrzením při nastavení různých časových zón a pro letní i zimní období; u exportu iCalendar zkontroluj UTC nebo odpovídající časovou zónu.
 
@@ -95,8 +77,6 @@
 - [ ] Když předtočené video se zvukem předává informace: má synchronizované titulky zachycující řeč i významové zvuky. Výjimku podle WCAG 1.2.2 posuzuj jen u jasně označené mediální alternativy existujícího textu. *Ověření (člověk):* přehraj video bez zvuku a porovnej titulky s původní zvukovou stopou; samotná existence automatických titulků nedokazuje jejich správnost.
 
 - [ ] Když předtočené video obsahuje podstatnou vizuální informaci, kterou zvuk nesděluje: je tato informace dostupná také zvukem. Pro WCAG 1.2.5 na úrovni AA samotný textový přepis nenahrazuje audio description. *Ověření (člověk):* porovnej obraz se zvukem a ověř, že důležité texty, děje a výsledky jsou vyslovené v hlavní stopě nebo dostupné ve zvukovém popisu.
-
-- [ ] Když vložené médium automaticky přehrává zvuk déle než 3 sekundy: má dostupné pozastavení, zastavení nebo vlastní ovládání hlasitosti nezávislé na systému. *Ověření (prohlížeč):* načti stránku bez aktivace přehrávače a ověř délku automatického zvuku i dostupnost jeho ovládání klávesnicí.
 
 ## Zdroje
 

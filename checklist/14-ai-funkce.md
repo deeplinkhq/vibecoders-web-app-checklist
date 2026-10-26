@@ -8,7 +8,7 @@ Bezpečnostní testy prováděj v testovacím prostředí se syntetickými daty 
 
 ## Klíče, kontext a soukromí
 
-- [ ] Když aplikace používá vlastní dlouhodobý klíč k placenému modelu: klíč není dostupný klientovi. Jeho zkopírováním by kdokoli získal přístup na tvůj účet. *Ověření:* projdi sestavené klientské soubory, zdrojové mapy a odpovědi API; ověř, že dlouhodobý klíč používá jen server. [Z1]
+Klíč k modelu ve veřejných souborech viz [Bezpečnost](08-bezpecnost.md).
 
 - [ ] Systémový prompt a další skryté instrukce neobsahují přístupová tajemství. Jejich utajení nesmí být podmínkou zabezpečení aplikace. *Ověření:* projdi skutečně sestavovaný kontext včetně popisů nástrojů; hledej klíče, hesla, tokeny a připojovací řetězce, hodnoty v reportu nezveřejňuj. [Z2]
 
@@ -100,7 +100,6 @@ Bezpečnostní testy prováděj v testovacím prostředí se syntetickými daty 
 
 Zdroje ověřené k 26. 10. 2026. Označení LLM odpovídá vydání OWASP 2026.
 
-- **Z1:** [OWASP Secrets Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html).
 - **Z2:** [OWASP LLM08:2026 Hidden Context Exposure](https://github.com/GenAI-Security-Project/GenAI-LLM-Top10/blob/main/2026/final/LLM08_HiddenContextExposure.md).
 - **Z3:** [OWASP LLM02:2026 Sensitive Information Disclosure](https://github.com/GenAI-Security-Project/GenAI-LLM-Top10/blob/main/2026/final/LLM02_SensitiveInformationDisclosure.md).
 - **Z4:** [OWASP LLM09:2026 Vector and Embedding Weaknesses](https://github.com/GenAI-Security-Project/GenAI-LLM-Top10/blob/main/2026/final/LLM09_VectorAndEmbeddingWeaknesses.md).
