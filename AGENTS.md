@@ -7,6 +7,7 @@ Veřejný checklist pro weby a aplikace postavené s AI agentem. Čtou ho lidé 
 - `README.md` je rozcestník pro lidi s tabulkou kategorií.
 - `AUDIT.md` je postup pro agenta, který kontroluje projekt.
 - `checklist/NN-slug.md` je jedna kategorie. Nová kategorie dostane další číslo a řádek v tabulce v `README.md`.
+- `zdroje.md` je seznam zdrojů. Nové číslo nebo pravidlo v položce má mít zdroj tady.
 
 ## Formát položky
 

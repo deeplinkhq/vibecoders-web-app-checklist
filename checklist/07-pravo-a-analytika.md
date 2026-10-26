@@ -26,6 +26,13 @@ Nejsme právníci a tohle není právní poradenství. Ber to jako seznam otáze
 
 - [ ] Když web provozuje podnikatel: v patičce je jméno, sídlo nebo místo podnikání, IČO, údaj o zápisu do rejstříku a funkční e-mail (§ 435 občanského zákoníku).
 
+## Prodej a účty
+
+- [ ] Když web nebo aplikace prodává spotřebitelům (předplatné, kurz, služba): obchodní podmínky jsou odkázané z patičky i před platbou.
+- [ ] Když se smlouvy se spotřebiteli uzavírají online: počítáš s tlačítkem „Odstoupit od smlouvy", dostupným po celou 14denní lhůtu. Vychází ze směrnice 2023/2673, v ČR se čeká účinnost od 1. 1. 2027 (stav 10/2026, zákon zatím nepotvrzený).
+- [ ] Když aplikace má uživatelské účty: uživatel si může účet smazat, nebo je napsané, jak o smazání požádat. Smazání se týká i navázaných služeb (e-maily, platby, analytika), vyřídit ho musíš do měsíce.
+- [ ] Když aplikace drží osobní údaje: víš, že únik dat se hlásí ÚOOÚ do 72 hodin od zjištění (čl. 33 GDPR). Lhůta běží i o víkendu, postup měj sepsaný předem.
+
 ## Newsletter
 
 - [ ] Když web sbírá e-maily na newsletter: souhlas je samostatný, dobrovolný a prokazatelný (§ 7 zákona 480/2004 Sb.). Double opt-in zákon nepředepisuje, ale bez něj souhlas neprokážeš.

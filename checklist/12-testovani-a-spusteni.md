@@ -8,6 +8,13 @@
 - [ ] Před sloučením je preview prohlédnuté na počítači i na mobilu a konzole prohlížeče je bez chyb. Když agent „při té příležitosti" přepsal půl webu, pull request zavři a zadej úžeji.
 - [ ] Po každém nasazení proběhne dvouminutová kontrola v anonymním okně, včetně odeslání testovacího formuláře.
 
+## Automatické testy
+
+- [ ] Když jde o aplikaci: 3 až 5 hlavních průchodů (registrace a přihlášení, hlavní akce, platba) má automatický test (třeba Playwright) a agent ho pouští po každé změně. Úprava od AI sahá i do souborů, které jsi neotevřel.
+- [ ] Test ověřuje výsledek (text na stránce, vzniklý záznam), ne jen to, že se proklikal.
+- [ ] Ničivé akce (smazat, zrušit, odebrat) jsou vyzkoušené a mažou správný záznam, ne cizí ani všechny.
+- [ ] Víš, že testy průchodů neověřují bezpečnost. Přístup k cizím datům a uniklé klíče se kontrolují zvlášť podle [Bezpečnosti](08-bezpecnost.md).
+
 ## Prohlížeče
 
 - [ ] Web je otestovaný v Chrome na počítači, v Safari na iPhonu a v Chrome na Androidu. Safari na iPhonu je povinné, chová se jinak než Chrome i na Macu.
@@ -21,6 +28,7 @@
 - [ ] V kódu nezůstaly `console.log`, TODO komentáře a testovací data.
 - [ ] Formulář je vyzkoušený naostro, včetně prázdných polí a chybného vstupu.
 - [ ] Lighthouse prošel ve všech čtyřech kategoriích (výkon, přístupnost, osvědčené postupy, SEO).
+- [ ] Když jde o aplikaci a chystáš kampaň: limity registrací jsou zvednuté. Supabase s vlastním SMTP má výchozí limit 30 nových uživatelů za hodinu (stav 10/2026).
 - [ ] Texty po tobě přečetl někdo další. Překlep v nadpisu působí hůř než pomalé načítání.
 
 ## Hned po spuštění

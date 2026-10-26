@@ -34,10 +34,13 @@ Opravuj pak po kategoriích, ne všechno naráz. Po každém kole nech agenta ko
 | [Doména a nasazení](checklist/11-domena-a-nasazeni.md) | každého webu na vlastní doméně |
 | [Testování a spuštění](checklist/12-testovani-a-spusteni.md) | každého webu |
 | [Provoz](checklist/13-provoz.md) | čehokoli, co má běžet déle než týden |
+| [AI funkce v aplikaci](checklist/14-ai-funkce.md) | aplikace, která volá jazykový model |
 
 ## Stav
 
 Stav k říjnu 2026. Pravidla vyhledávačů, limity služeb a ceny se mění, proto u nich je, k jakému datu platí. Konkrétní nástroje a služby jsou příklady, ne doporučený stack. Právní část je psaná pro Českou republiku a není to právní poradenství.
+
+Ze kterých zdrojů checklist vychází, je v [zdroje.md](zdroje.md).
 
 ## Přispívání
 

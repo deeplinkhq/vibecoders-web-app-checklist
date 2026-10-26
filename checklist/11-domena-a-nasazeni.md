@@ -6,6 +6,7 @@
 
 - [ ] Změny nejdou přímo do `main`. Každá změna je větev a pull request, i když na projektu pracuješ sám. Preview adresa od hostingu je zkušebna.
 - [ ] Víš, jak vrátit rozbitou produkci: rychlý návrat na předchozí verzi v hostingu (na Vercelu Instant Rollback), pak Revert pull requestu. Nikdy `git reset` a force push.
+- [ ] Preview nasazení nejsou volně přístupná (na Vercelu Deployment Protection) a nemíří na produkční databázi. Adresa preview se dá najít.
 - [ ] Tarif hostingu odpovídá použití. Vercel Hobby je jen pro nekomerční provoz, web firmy patří na placený plán (stav 10/2026).
 
 ## Doména a DNS

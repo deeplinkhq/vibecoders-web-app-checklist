@@ -23,7 +23,7 @@
 
 - [ ] Strukturovaná data jsou jako JSON-LD v `<head>`, ne Microdata.
 - [ ] Typ odpovídá realitě: `LocalBusiness` s `name` a `address`, když existuje provozovna, jinak `Organization`.
-- [ ] Žádné `FAQPage`. Google tyhle výsledky zrušil od 7. 5. 2026 a pro AI odpovědi speciální markup nepotřebuješ. Otázky a odpovědi stačí jako obyčejné HTML.
+- [ ] `FAQPage` se nepřidává kvůli vzhledu ve výsledcích. Google tyhle rozšířené výsledky zrušil od 7. 5. 2026, otázky a odpovědi stačí jako obyčejné HTML.
 - [ ] Údaje v JSON-LD se shodují s viditelným textem na stránce.
 - [ ] Ověřeno v Rich Results Test. Agent rád vygeneruje platný, ale typově nesmyslný JSON-LD.
 
@@ -42,7 +42,7 @@
 - [ ] Nadpisy jsou formulované jako otázky, které lidé reálně píšou.
 - [ ] Konkrétní čísla, ceny a jména místo obecných frází. Modely citují ověřitelná tvrzení.
 - [ ] Obsah je čitelný bez JavaScriptu. Řada AI crawlerů stránku nevykresluje, statické HTML je tady výhoda.
-- [ ] Žádný `llms.txt`. Google v červnu 2026 potvrdil, že ho žádný z AI systémů nepoužívá.
+- [ ] `llms.txt` není priorita. Google v červnu 2026 napsal, že pro jeho vyhledávání není potřeba a nepomáhá ani neškodí. U ostatních AI vyhledávačů to není potvrzené.
 
 ## Search Console a další nástroje
 
@@ -52,6 +52,7 @@
 
 ## Česko
 
+- [ ] Když se obsah webu často mění: změněné adresy se posílají přes IndexNow. Podporuje ho Seznam i Bing (Google ne), nová stránka se tak do Seznamu dostane dřív.
 - [ ] Web je v Seznam Webmaster (reporter.seznam.cz/wm). Seznam drží 11 až 15 % vyhledávání a neindexuje tak spolehlivě jako Google.
 - [ ] Když jde o lokální službu: založený a vyplněný Google Business Profile (kategorie, oblast, otevírací doba, telefon, aspoň 5 fotek). Google má v ČR zhruba 80 % vyhledávání.
 - [ ] Když jde o lokální službu: zápis na Firmy.cz, který se propisuje do Mapy.cz.

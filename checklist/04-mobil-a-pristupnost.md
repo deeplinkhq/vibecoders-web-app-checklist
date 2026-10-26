@@ -40,6 +40,7 @@
 - [ ] Celá stránka jde projít Tabem a je vždy vidět, kde jsi.
 - [ ] Nikde není `outline: none` bez náhrady, použij `:focus-visible`. Tohle je nejčastější způsob, jak vibe coded web znepřístupnit.
 - [ ] Prvek, na kterém je focus, nezakrývá přilepená hlavička ani cookie lišta (WCAG 2.2).
+- [ ] Na začátku stránky je odkaz „Přeskočit na obsah", viditelný při Tabu. Bez něj musí člověk s klávesnicí na každé stránce protabovat celou navigaci.
 - [ ] Zavřené mobilní menu není tabovatelné a otevřené jde zavřít Escapem.
 - [ ] Focus nikde neuvízne, ani ve vloženém iframu.
 
