@@ -40,3 +40,9 @@
 - [ ] Když jde o lokální službu: firma má vyplněný profil v mapách Googlu i Seznamu (kategorie, oblast, otevírací doba, telefon, fotky).
 - [ ] Když jde o lokální službu: jméno, adresa a telefon jsou znak po znaku stejné na webu i ve všech profilech.
 - [ ] Když jde o lokální službu: obec a čtvrť jsou napsané v textu stránky, ne jen v mapě.
+
+## Zdroje
+
+- Google Search Central: titulky, duplicitní adresy, strukturovaná data, robots.txt, AI funkce ve vyhledávání.
+- [ogp.me](https://ogp.me): náhledy při sdílení.
+- Dokumentace AI crawlerů OpenAI, Anthropic a Applu.

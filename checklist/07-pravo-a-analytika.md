@@ -48,3 +48,9 @@ Nejsme právníci a tohle není právní poradenství. Ber to jako seznam otáze
 ## Přístupnost a zákon
 
 - [ ] Je jasné, jestli se na web vztahuje zákon o přístupnosti (424/2023 Sb., účinný od 28. 6. 2025). Týká se e-shopů, bankovnictví, dopravy a dalších vyjmenovaných služeb, mikropodniky mají výjimku. Prezentační web s kontaktním formulářem tam nespadá.
+
+## Zdroje
+
+- ÚOOÚ: doporučení k cookies (3/2023).
+- Zákon 127/2005 Sb. o elektronických komunikacích, zákon 480/2004 Sb. o některých službách informační společnosti, § 435 občanského zákoníku, GDPR (čl. 13 a 33).
+- Zákon 424/2023 Sb. o přístupnosti, výklad ČOI.

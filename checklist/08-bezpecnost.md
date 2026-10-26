@@ -34,3 +34,10 @@ Agent dělá dobře známé vzory, ale selhává tam, kde bezpečnost závisí n
 - [ ] Přihlášení, registrace a další veřejné akce mají limit počtu pokusů a registrace ochranu proti botům.
 - [ ] Přihlášený uživatel se nedostane k cizím datům tím, že v adrese nebo požadavku změní číslo záznamu. Zkus to ručně.
 - [ ] Než jde změna do produkce, prošel ji druhý pár očí: člověk, nebo aspoň AI review.
+
+## Zdroje
+
+- [OWASP Top 10:2025](https://top10.owasp.org/2025) a rozbor [Vibe coding against OWASP Top 10](https://softwaremill.com/vibe-coding-against-owasp-top-10-2025/) od SoftwareMill.
+- [vibe-coding-security](https://github.com/boxed-dev/vibe-coding-security): checklist před spuštěním pro aplikace postavené s AI.
+- [Escape.tech: State of Security of Vibe Coded Apps](https://escape.tech/state-of-security-of-vibe-coded-apps)
+- Veracode GenAI Code Security Report 2025, GitGuardian State of Secrets Sprawl 2026, studie o halucinovaných balíčcích z USENIX Security 2025.

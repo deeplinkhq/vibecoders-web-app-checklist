@@ -9,3 +9,7 @@
 - [ ] Model nemůže udělat nic, co by uživatel sám dělat nesměl.
 - [ ] V instrukcích pro model nejsou klíče, hesla ani interní údaje. Uživatel je z modelu dřív nebo později vytáhne.
 - [ ] Víš, že text od uživatele (a obsah webů nebo souborů, které model čte) může obsahovat pokyny pro model. Důležitá rozhodnutí nestojí jen na jeho odpovědi.
+
+## Zdroje
+
+- [OWASP Top 10 for LLM Applications 2025](https://genai.owasp.org/llm-top-10/)

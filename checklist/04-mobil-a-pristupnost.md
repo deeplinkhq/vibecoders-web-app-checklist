@@ -48,3 +48,9 @@
 - [ ] K opravě kontrastu je přidané omezení, jinak agent překope barvy podle sebe: „drž aspoň 4,5:1 a neměň barvu značky". Po opravě je kontrast přeměřený, agent ho jen odhaduje.
 - [ ] Oprava není jen umlčení nástroje. Když agent přidá blok s rolí tlačítka, nález zmizí, ale klávesnicí to pořád nejde ovládat.
 - [ ] Zbytek prošel člověk. Automat najde zhruba polovinu chyb, smysluplnost popisků a srozumitelnost hlášek nepozná.
+
+## Zdroje
+
+- [WCAG 2.2](https://www.w3.org/TR/WCAG22/)
+- WebAIM Million 2026: nejčastější chyby přístupnosti na domovských stránkách.
+- [Front-End Checklist](https://frontendchecklist.io)

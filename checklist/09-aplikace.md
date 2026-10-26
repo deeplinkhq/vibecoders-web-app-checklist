@@ -44,3 +44,8 @@
 ## Obsah
 
 - [ ] Když texty mění někdo, kdo nepracuje s agentem: má na to jednoduchý nástroj a texty nejsou natvrdo v kódu.
+
+## Zdroje
+
+- [OWASP Top 10:2025](https://top10.owasp.org/2025)
+- [vibe-coding-security](https://github.com/boxed-dev/vibe-coding-security)

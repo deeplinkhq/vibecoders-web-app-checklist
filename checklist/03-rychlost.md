@@ -22,10 +22,13 @@
 
 - [ ] Fonty jsou součástí webu, ne načítané z cizího serveru. Je to rychlejší a odpadne problém s GDPR.
 - [ ] Fonty obsahují českou diakritiku a jsou jen v řezech, které se opravdu používají.
-- [ ] Text je vidět hned, i než se font načte.
-- [ ] Zváženo, jestli nestačí systémový font. Nejrychlejší font je žádný font.
+- [ ] Text je vidět hned, i než se font načte - existuje vybraný záložní základní font, který je podobný tomu vlastnímu
 
 ## Vývojové nástroje v produkci
 
 - [ ] Na produkci neběží nic, co je určené jen pro vývoj: knihovny, které generují styly až v prohlížeči, vývojové verze knihoven, ladicí výpisy. Agent je použije, protože je to nejrychlejší cesta k funkčnímu výsledku.
 - [ ] Rychlý hosting nespraví pomalý web. Kompresi a doručení řeší hosting, velikost obrázků a množství kódu ne.
+
+## Zdroje
+
+- [web.dev](https://web.dev): Core Web Vitals, fonty, obrázky.

@@ -21,7 +21,7 @@ Opravuj pak po kategoriích, ne všechno naráz. Po každém kole nech agenta ko
 
 | Kategorie | Týká se |
 | --- | --- |
-| [Zadání a obsah](checklist/01-zadani-a-obsah.md) | každého webu |
+| [Obsah webu nebo landing page](checklist/01-obsah-webu-nebo-landing-page.md) | každého webu |
 | [Vzhled](checklist/02-vzhled.md) | každého webu |
 | [Rychlost, obrázky a fonty](checklist/03-rychlost.md) | každého webu |
 | [Mobil a přístupnost](checklist/04-mobil-a-pristupnost.md) | každého webu |
@@ -40,7 +40,7 @@ Opravuj pak po kategoriích, ne všechno naráz. Po každém kole nech agenta ko
 
 Stav k říjnu 2026. Pravidla vyhledávačů, limity služeb a ceny se mění, proto u nich je, k jakému datu platí. Checklist je obecný, nezávisí na tom, v čem a kde web stavíš. Právní část je psaná pro Českou republiku a není to právní poradenství.
 
-Ze kterých zdrojů checklist vychází, je v [zdroje.md](zdroje.md).
+Zdroje jsou na konci každé kategorie.
 
 ## Přispívání
 

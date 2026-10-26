@@ -21,3 +21,8 @@
 - [ ] Produkční data se zálohují. U levných a bezplatných tarifů automatické zálohy často nejsou.
 - [ ] Zálohují se i nahrané soubory, nejen databáze.
 - [ ] Obnova ze zálohy je aspoň jednou vyzkoušená. Záloha bez vyzkoušené obnovy není záloha.
+
+## Zdroje
+
+- [UpGuard: Systemic Data Exposure in Supabase Apps](https://www.upguard.com/blog/everything-everywhere-systemic-data-exposure-in-supabase-apps) (10/2026): tisíce databází s daty čitelnými pro kohokoli.
+- [Incident Replit](https://oecd.ai/en/incidents/2025-07-19-1eb1): agent smazal produkční databázi (7/2025).

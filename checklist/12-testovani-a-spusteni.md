@@ -32,3 +32,7 @@
 
 - [ ] Web je otevřený z cizího zařízení a z mobilních dat.
 - [ ] Web prošel někdo, kdo ho nezná, a ty se díváš, kde zaváhá.
+
+## Zdroje
+
+- [BugBug: How to Test a Vibe-Coded App](https://bugbug.io/blog/software-testing/how-to-test-a-vibe-coded-app/) (9/2026, text výrobce testovacího nástroje)

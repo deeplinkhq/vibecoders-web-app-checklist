@@ -21,7 +21,7 @@ Každý soubor v `checklist/` má nahoře řádek **Týká se**. Kategorie, kter
 
 ## 3. Projdi položky
 
-Položka, která začíná „Když…", platí jen za dané podmínky.
+Položka, která začíná „Když…", platí jen za dané podmínky. Jak položku zkontrolovat, říká poznámka *Ověření:* na jejím konci. Co jde, ověř sám (příkaz, API, kód). Položky s *Ověření (prohlížeč):* ověř, když umíš ovládat prohlížeč, jinak je dej do „Ověř ručně". Položky s *Ověření (člověk):* dej rovnou do „Ověř ručně".
 
 U každé položky urči stav:
 
