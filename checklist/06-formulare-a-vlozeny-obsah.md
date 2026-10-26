@@ -1,36 +1,130 @@
 # Formuláře a vložený obsah
 
-**Týká se:** webu s formulářem nebo vloženým obsahem z jiné služby (mapa, video, kalendář, rezervace).
+**Týká se:** webu nebo aplikace s formulářem či vloženým obsahem, například mapou, videem, kalendářem, rezervacemi nebo jiným widgetem.
 
-## Formulář
+## Pole a instrukce
 
-- [ ] Formulář má co nejmíň polí. Každé pole navíc snižuje počet odeslání. Pro projevení zájmu stačí dvě pole, zbytek se doptáš v odpovědi.
-- [ ] Každé pole má viditelný popisek. Šedý text uvnitř pole není popisek, po kliknutí zmizí.
-- [ ] Pole na e-mail a telefon jsou tak označená, že na mobilu vyskočí správná klávesnice a prohlížeč umí údaje doplnit.
-- [ ] Chybové hlášky jsou konkrétní a u pole, ke kterému patří.
-- [ ] Je vidět stav: odesílám, odesláno, chyba. Bez toho lidé klikají třikrát.
-- [ ] Po odeslání následuje konkrétní další krok, ne obecné „Děkujeme".
+- [ ] Každé požadované pole má doložitelný účel v daném procesu. Zbytečné údaje prodlužují vyplňování a zvyšují množství sbíraných dat. *Ověření:* porovnej pole s jejich použitím v kódu a navazujícím procesu; u nejasného účelu polož otázku provozovateli.
 
-## Formulář, který tiše nefunguje
+- [ ] Každé pole má srozumitelný popisek propojený s ovládacím prvkem. U běžných formulářových polí je popisek viditelný i po vyplnění; placeholder ho nenahrazuje. *Ověření:* zkontroluj vazbu `label` a pole nebo odpovídající přístupné pojmenování; pomocí axe vyhledej chybějící popisky a neplatné vazby.
 
-- [ ] Formulář hlásí úspěch, jen když data opravdu dorazila. Agent rád ukáže „Odesláno", i když nic neodešlo.
-- [ ] Při chybě se ukáže hláška a náhradní kontakt (e-mail, telefon).
-- [ ] Ověřeno odesláním s vypnutým internetem: musí se ukázat chyba, ne úspěch.
-- [ ] Ověřeno odesláním z živého webu jako cizí člověk až po doručenou zprávu.
+- [ ] Když jednotlivé volby dávají smysl až se společnou otázkou: skupina má programově dostupný název. Samostatné popisky „Ano“ a „Ne“ bez otázky nestačí. *Ověření:* zkontroluj například `fieldset` s `legend` nebo odpovídající pojmenovanou skupinu v accessibility tree.
 
-## Kam formulář posílá data
+- [ ] Povinná pole jsou rozpoznatelná před odesláním vizuálně i programově. Samotná barva povinnost nesděluje. *Ověření:* porovnej viditelné označení s `required` nebo odpovídajícím stavem přístupnosti a s pravidly backendu.
 
-- [ ] Formulář neposílá data z prohlížeče rovnou do cizí služby s přístupovým klíčem nebo adresou webhooku v kódu. Kdokoli si je ze stránky přečte a zneužije. Data jdou přes vlastní server nebo přes formulářovou službu.
+- [ ] Když pole vyžaduje konkrétní formát nebo má omezující limit: instrukce jsou dostupné před zadáním hodnoty. U příloh uveď povolené typy a maximální velikost. *Ověření:* porovnej instrukce s implementovanou validací a zkontroluj jejich propojení s polem, například přes `aria-describedby`.
 
-## Spam
+- [ ] Vstupní typ odpovídá zadávaným údajům. Telefon, PSČ a jiné identifikátory nejsou množství určená k aritmetice. *Ověření:* projdi `type` a `inputmode`; u telefonu ověř odpovídající telefonní vstup, u číselného identifikátoru zachování počátečních nul.
 
-- [ ] Formulář má ochranu proti spamu, která nesleduje návštěvníky: skryté pole, které vyplní jen bot, a kontrolu, že formulář nebyl odeslán hned po načtení.
-- [ ] Ochrana proti botům nepřidává sledovací cookies. Některé CAPTCHA služby je mají a kvůli nim pak potřebuješ cookie lištu.
+- [ ] Když formulář sbírá běžné osobní údaje o vyplňujícím: účel polí je označen platnými hodnotami `autocomplete`. Samotné `type="email"` neurčuje, čí e-mail formulář požaduje. *Ověření:* porovnej pole s účely podle WCAG 1.3.5 a zkontroluj například `name`, `email`, `tel` nebo `postal-code`; rozliš i opakující se adresní skupiny.
 
-## Vložený obsah
+## Ovládání formulářů a widgetů
 
-- [ ] Vložený obsah má popisek pro čtečky, načítá se až při rolování a má pevnou výšku, ať stránka neposkočí.
-- [ ] Na mobilu má vložený obsah plnou šířku a nevzniká v něm vodorovné rolování.
-- [ ] Vedle vloženého obsahu je přímá alternativa: odkaz „otevřít v novém okně", adresa textem vedle mapy. Pro případ, že se obsah nenačte.
-- [ ] Vložený obsah je otestovaný na iPhonu. Safari blokuje cookies z cizích webů a vložené služby se tam chovají jinak.
-- [ ] Vložený obsah je vyzkoušený naostro včetně celého řetězce, třeba rezervace až po potvrzovací e-mail.
+- [ ] Formulář i interaktivní vložený obsah jde obsloužit klávesnicí. To zahrnuje výběr data, nabídky, přepínání kroků a odeslání. *Ověření (prohlížeč):* dokonči proces bez myši pomocí Tabu, Shift+Tabu, šipek, Enteru a mezerníku podle typu ovládacího prvku.
+
+- [ ] Z formuláře ani vloženého obsahu nevzniká past pro klávesnici. U modálního dialogu existuje dostupný způsob zavření. *Ověření (prohlížeč):* vstup klávesnicí do kalendáře, přehrávače, mapy a dalších widgetů a ověř návrat k obsahu stránky; případná nestandardní klávesa pro opuštění musí být vysvětlená.
+
+- [ ] Když používáš vlastní formulářový ovládací prvek: jeho role a aktuální stav jsou dostupné asistivním technologiím. Vizuálně vybraná nebo rozbalená položka musí mít odpovídající programový stav. *Ověření (prohlížeč):* v accessibility tree zkontroluj roli, hodnotu a změny stavů, například `expanded`, `selected` nebo `checked`.
+
+- [ ] Když proces potřebuje údaj zadaný v předchozím kroku: nabídne ho předvyplněný nebo k výběru. Výjimkou je nezbytné opakování, bezpečnost nebo údaj, který už není platný. *Ověření (prohlížeč):* projdi všechny kroky včetně návratu zpět a ověř, že stejné platné údaje nemusíš znovu ručně opisovat.
+
+- [ ] Když formulář omezuje dobu vyplňování: splňuje některou možnost WCAG 2.2.1. Limit jde předem vypnout, předem nastavit alespoň na desetinásobek výchozí doby, nebo prodloužit jednoduchou akcí s nejméně 20 sekundami na reakci a alespoň deseti prodlouženími; výjimkou je nezbytný limit, neoddělitelná událost v reálném čase nebo limit delší než 20 hodin. *Ověření:* zkontroluj časovače a expiraci na klientu i serveru a testem s řízeným časem ověř vybranou možnost; případnou výjimku dolož.
+
+## Validace a oprava chyb
+
+- [ ] Pravidla vstupních dat vynucuje backend i při obejití formuláře. Kontrola pouze v prohlížeči nezabrání podání neplatných dat přímo na endpoint. *Ověření:* integračním testem nebo HTTP klientem odešli chybějící povinnou hodnotu, neplatný typ, hodnotu mimo povolený rozsah a neplatnou kombinaci souvisejících polí; backend je musí odmítnout bez provedení zamýšlené operace.
+
+- [ ] Validace přijímá platné údaje očekávané cílové skupiny. Neodmítá jméno kvůli diakritice či apostrofu ani podporovaný telefonní formát kvůli mezerám. *Ověření:* projdi validační pravidla a otestuj reprezentativní platné varianty; omezení na konkrétní zemi nebo formát musí odpovídat skutečnému účelu formuláře.
+
+- [ ] Každá validační chyba určuje problém a způsob opravy u příslušného pole. Chyba je s polem programově propojená a nesděluje ji pouze červený rámeček. *Ověření (prohlížeč):* vyvolej chyby a zkontroluj text, umístění, přístupný popis a stav neplatného pole.
+
+- [ ] Po neúspěšném odeslání je cesta k chybám dostupná klávesnicí. Použij například fokus na první chybné pole nebo souhrn chyb s odkazy na pole. *Ověření (prohlížeč):* odešli neplatný formulář, zjisti polohu fokusu a oprav všechny chyby bez myši.
+
+- [ ] Po validační nebo přenosové chybě zůstávají běžné vyplněné údaje zachované. Výjimky pro citlivé údaje nebo znovuvýběr souboru musí být odůvodněné a vysvětlené. *Ověření (prohlížeč):* vyplň formulář, vyvolej validační chybu a následně chybu přenosu a porovnej hodnoty před a po chybě.
+
+- [ ] Když podání vytváří právní závazek, finanční transakci nebo závažnou změnu uživatelských dat: existuje ochrana před chybným potvrzením. Podání lze vrátit, chyby zkontrolovat a opravit, nebo údaje před dokončením zkontrolovat, upravit a potvrdit podle WCAG 3.3.4. *Ověření (prohlížeč):* na testovacích datech zadej chybný údaj a ověř dostupnou cestu opravy nebo vrácení operace.
+
+## Odeslání a potvrzení
+
+- [ ] Během odesílání je zřejmé, že požadavek probíhá, a po jeho skončení je zřejmý výsledek. Samotná animace bez sdělení stavu nestačí. *Ověření (prohlížeč):* zpomal odpověď endpointu a projdi čekání, úspěch i chybu.
+
+- [ ] Když se stav odesílání mění bez načtení nové stránky a bez přesunu fokusu: změna je programově oznamovaná. Použij odpovídající stavovou oblast podle WCAG 4.1.3. *Ověření:* zkontroluj implementaci například `role="status"` nebo vhodné live region a změny jejich obsahu ve všech větvích odesílání.
+
+- [ ] Hláška o úspěchu odpovídá skutečně potvrzenému výsledku backendu. Přijetí požadavku ke zpracování není potvrzení doručeného e-mailu ani dokončené rezervace. *Ověření:* sleduj podmínku zobrazení hlášky a u testovacího podání ji porovnej s odpovědí API a výsledným záznamem nebo přijatou úlohou; HTTP 202 posuzuj jako přijetí ke zpracování.
+
+- [ ] Selhání komunikace nebo backendu nevede k falešnému úspěchu ani nekonečnému čekání. Při neznámém výsledku po přerušení spojení hláška netvrdí, že podání určitě nevzniklo. *Ověření (prohlížeč):* otestuj offline stav před odesláním, přerušení během přenosu, HTTP 4xx, HTTP 5xx a neodpovídající endpoint; porovnej chování s nastaveným timeoutem.
+
+- [ ] Při neúspěšném podání je uveden konkrétní další postup. Může to být oprava údaje, pozdější opakování, kontrola stavu podání nebo alternativní kontakt. *Ověření (prohlížeč):* vyvolej jednotlivé chybové větve a ověř, že jejich instrukce odpovídají příčině a nabízená cesta funguje.
+
+- [ ] Když opakované podání může vytvořit duplicitní rezervaci, objednávku nebo jinou škodlivou operaci: backend umí stejné podání bezpečně rozpoznat. Vypnutí tlačítka v prohlížeči samo nestačí. *Ověření:* integračním testem zopakuj stejné podání i po simulované ztrátě odpovědi a ověř jediný obchodní výsledek.
+
+- [ ] Potvrzení vysvětluje, co bylo přijato a co bude následovat. Když existuje identifikátor podání nebo provozovatel slíbil termín odpovědi, potvrzení je obsahuje. *Ověření:* porovnej potvrzovací text a šablony s procesem a údaji vracenými backendem; nedoplňuj neověřenou lhůtu odpovědi.
+
+- [ ] Když formulář nebo vložený widget posílá e-mail: doručení je ověřené z nasazeného webu až do cílové schránky. Potvrzení od odesílacího systému samo nedokazuje přítomnost zprávy ve schránce. *Ověření (člověk):* bez přihlášení provozovatele odešli označené testovací podání a v cílové schránce dohledáš stejný obsah; když proces slibuje potvrzení návštěvníkovi, ověř i jeho doručení.
+
+## Ochrana proti spamu
+
+- [ ] Když formulář veřejně přijímá podání: má serverově vynucené omezení jejich četnosti. Limit odpovídá riziku a běžnému provozu; samotný honeypot ani minimální doba vyplnění ho nenahrazují. *Ověření:* najdi limit, jeho časové okno a způsob rozlišení požadavků; v izolovaném testu ověř podání pod limitem a nad ním i při přímém volání endpointu.
+
+- [ ] Když odeslání vyžaduje anti-bot token: jeho platnost kontroluje backend. Pouhá přítomnost widgetu nebo tokenu v požadavku není důkaz úspěšné kontroly. *Ověření:* testem endpointu ověř odmítnutí chybějícího, neplatného a podle použitého protokolu expirovaného či opakovaně použitého tokenu.
+
+- [ ] Když používáš interaktivní CAPTCHA: existuje přístupná cesta dokončení bez stejné smyslové nebo kognitivní překážky. Alternativní varianta stejného obrázkového úkolu tuto podmínku neřeší. *Ověření (člověk):* se čtečkou a bez myši dokonči podání přes dostupnou alternativu; ověř i praktickou použitelnost případného náhradního kontaktu.
+
+- [ ] Když používáš honeypot nebo kontrolu rychlosti vyplnění: neblokují běžné vyplnění ani asistivní technologie. Rychlé doplnění uložených údajů samo neprokazuje bota. *Ověření (prohlížeč):* zkontroluj nepřítomnost honeypotu v běžném pořadí fokusu a accessibility tree a odešli formulář po automatickém doplnění údajů.
+
+## Vložené mapy, kalendáře a další widgety
+
+- [ ] Když je obsah vložený přes iframe: rám má výstižný přístupný název. Název rozlišuje například mapu provozovny od rezervačního kalendáře. *Ověření:* projdi `iframe` v DOM a jejich `title` nebo jiné přístupné pojmenování; zkontroluj i rámy vložené dodatečně skriptem.
+
+- [ ] Vložený obsah při šířce 320 CSS px nezpůsobuje ztrátu ovládání ani vodorovné rolování celé stránky. Nezbytný dvourozměrný obsah, například mapa, může mít vlastní posouvání podle výjimky WCAG 1.4.10. *Ověření (prohlížeč):* při šířce 320 CSS px otevři i další stavy widgetu a zkontroluj oříznutí polí, potvrzení a ovládacích prvků.
+
+- [ ] Pro vložený obsah je před načtením rezervovaný odpovídající prostor. Rozměry nebo poměr stran nesmí po načtení odsunout okolní obsah. *Ověření (prohlížeč):* zpomal načítání a v záznamu změn rozložení zkontroluj kontejner před načtením i po něm; ověř i změnu výšky vícekrokového widgetu.
+
+- [ ] Když vložený obsah není potřeba v úvodním zobrazení: jeho nákladné zdroje se načítají odloženě. Odložení nesmí zablokovat obsah potřebný k první hlavní akci. *Ověření (prohlížeč):* v síťovém záznamu porovnej načítání před přiblížením k widgetu a po něm; zkontroluj například lazy loading nebo načtení po aktivaci.
+
+- [ ] Podstatná informace nebo akce zůstává dostupná i při nenačtení embedu. U mapy to může být textová adresa, u rezervace funkční samostatná stránka nebo náhradní kontakt. *Ověření (prohlížeč):* zablokuj domény widgetu a ověř dostupnost alternativy mimo jeho rám; samotnou událost `load` iframe nepovažuj za důkaz funkčnosti.
+
+- [ ] Když widget závisí na cookies nebo úložišti třetí strany: při jejich blokování funguje nebo nabídne použitelnou alternativní cestu. Návštěvník nesmí zůstat v neřešitelné přihlašovací či potvrzovací smyčce. *Ověření (prohlížeč):* v čisté relaci se zapnutým blokováním cookies třetích stran projdi celý proces včetně přesměrování; zaznamenej prohlížeč, verzi a nastavení.
+
+- [ ] Když vložený obsah nebo anti-spam ochrana používá technologii vyžadující předchozí souhlas: aktivuje se až po jeho udělení. Pouhé odložené načtení při rolování souhlas nenahrazuje, stav pravidel pro ČR 10/2026. *Ověření (prohlížeč):* v čisté relaci porovnej síťové požadavky a úložiště před volbou, po odmítnutí a po souhlasu; právní zařazení ověř podle kategorie 07.
+
+- [ ] Když kalendář nebo rezervace pracuje s konkrétním časem: widget a potvrzení označují stejný okamžik. Převod mezi časovými zónami nesmí změnit skutečný termín. *Ověření (prohlížeč):* porovnej vybraný termín s potvrzením při nastavení různých časových zón a pro letní i zimní období; u exportu iCalendar zkontroluj UTC nebo odpovídající časovou zónu.
+
+## Vložená videa
+
+- [ ] Když předtočené video se zvukem předává informace: má synchronizované titulky zachycující řeč i významové zvuky. Výjimku podle WCAG 1.2.2 posuzuj jen u jasně označené mediální alternativy existujícího textu. *Ověření (člověk):* přehraj video bez zvuku a porovnej titulky s původní zvukovou stopou; samotná existence automatických titulků nedokazuje jejich správnost.
+
+- [ ] Když předtočené video obsahuje podstatnou vizuální informaci, kterou zvuk nesděluje: je tato informace dostupná také zvukem. Pro WCAG 1.2.5 na úrovni AA samotný textový přepis nenahrazuje audio description. *Ověření (člověk):* porovnej obraz se zvukem a ověř, že důležité texty, děje a výsledky jsou vyslovené v hlavní stopě nebo dostupné ve zvukovém popisu.
+
+- [ ] Když vložené médium automaticky přehrává zvuk déle než 3 sekundy: má dostupné pozastavení, zastavení nebo vlastní ovládání hlasitosti nezávislé na systému. *Ověření (prohlížeč):* načti stránku bez aktivace přehrávače a ověř délku automatického zvuku i dostupnost jeho ovládání klávesnicí.
+
+## Zdroje
+
+- [W3C WAI: Forms Tutorial](https://www.w3.org/WAI/tutorials/forms/) - omezení požadovaných údajů a základní zásady formulářů.
+- [W3C WAI: Labeling Controls](https://www.w3.org/WAI/tutorials/forms/labels/) a [MDN: placeholder](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/placeholder) - popisky, jejich propojení a omezení placeholderu.
+- [W3C WAI: Grouping Controls](https://www.w3.org/WAI/tutorials/forms/grouping/) - společné otázky a skupiny ovládacích prvků.
+- [W3C WAI: Form Instructions](https://www.w3.org/WAI/tutorials/forms/instructions/) - povinnost, formáty a dostupnost instrukcí.
+- [W3C WAI: Validating Input](https://www.w3.org/WAI/tutorials/forms/validation/) - typy vstupů, tolerantní formáty a validace.
+- [WCAG 1.3.5: Identify Input Purpose](https://www.w3.org/WAI/WCAG22/Understanding/identify-input-purpose.html) - programové označení účelu osobních údajů.
+- [WCAG 2.1.1: Keyboard](https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html), [2.1.2: No Keyboard Trap](https://www.w3.org/WAI/WCAG22/Understanding/no-keyboard-trap.html) a [4.1.2: Name, Role, Value](https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html) - ovládání a sémantika widgetů.
+- [WCAG 3.3.7: Redundant Entry](https://www.w3.org/WAI/WCAG22/Understanding/redundant-entry) - opakované zadávání údajů a výjimky.
+- [WCAG 2.2.1: Timing Adjustable](https://www.w3.org/WAI/WCAG22/Understanding/timing-adjustable.html) - časové limity a přesné podmínky prodloužení.
+- [OWASP: Input Validation](https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html) - serverová validace a přijímání legitimních vstupů.
+- [W3C WAI: User Notifications](https://www.w3.org/WAI/tutorials/forms/notifications/) - zpětná vazba a propojení chyb s poli.
+- [GOV.UK: Error summary](https://design-system.service.gov.uk/components/error-summary/) a [Error message](https://design-system.service.gov.uk/components/error-message/) - navigace k chybám a zachování odpovědí.
+- [WCAG 3.3.4: Error Prevention](https://www.w3.org/WAI/WCAG22/Understanding/error-prevention-legal-financial-data.html) - prevence závažných chyb.
+- [WCAG 4.1.3: Status Messages](https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html) - oznamování dynamických stavů.
+- [RFC 9110, oddíl 15.3.3](https://www.rfc-editor.org/rfc/rfc9110.html#section-15.3.3) a [oddíl 9.2.2](https://www.rfc-editor.org/rfc/rfc9110.html#section-9.2.2) - přijetí ke zpracování a bezpečnost opakovaných požadavků.
+- [MDN: fetch](https://developer.mozilla.org/en-US/docs/Web/API/Window/fetch) - rozdíl mezi síťovou chybou a HTTP chybovou odpovědí.
+- [GOV.UK: Confirmation pages](https://design-system.service.gov.uk/patterns/confirmation-pages/) - potvrzení a další postup.
+- [RFC 5321, oddíly 4.2.5 a 6.1](https://www.rfc-editor.org/rfc/rfc5321.html) - přijetí e-mailu a následná selhání doručení.
+- [OWASP: Bot Management and Anti-Automation](https://cheatsheetseries.owasp.org/cheatsheets/Bot_Management_and_Anti-Automation_Cheat_Sheet.html) - vrstvená ochrana, rate limiting a kontrola anti-bot tokenů.
+- [W3C: Inaccessibility of CAPTCHA](https://www.w3.org/TR/turingtest/) - bariéry CAPTCHA a alternativy; jde o informativní Group Draft Note, nikoli normativní standard.
+- [MDN: iframe](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/iframe) - pojmenování rámů, rozměry a omezení událostí `load` a `error`.
+- [WCAG 1.4.10: Reflow](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html) - 320 CSS px a výjimky pro dvourozměrný obsah.
+- [web.dev: Best practices for using third-party embeds](https://web.dev/articles/embed-best-practices) - rezervace prostoru a odložené načítání.
+- [MDN: Storage Access API](https://developer.mozilla.org/en-US/docs/Web/API/Storage_Access_API) a [WebKit: Tracking Prevention](https://webkit.org/tracking-prevention/) - omezení úložišť a cookies třetích stran; chování ověřeno ke stavu 10/2026.
+- [ÚOOÚ: Cookies, otázky a odpovědi](https://uoou.gov.cz/verejnost/qa-otazky-a-odpovedi/cookies) - předchozí souhlas, technické výjimky a podobné technologie; stav 10/2026.
+- [RFC 5545, oddíl 3.3.5](https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.5) - časové zóny a rozdíl mezi pevným a „floating“ časem.
+- [W3C WAI: Captions/Subtitles](https://www.w3.org/WAI/media/av/captions/) a [Description of Visual Information](https://www.w3.org/WAI/media/av/description/) - titulky a zvukový popis.
+- [WCAG 1.4.2: Audio Control](https://www.w3.org/WAI/WCAG22/Understanding/audio-control.html) - automatický zvuk delší než 3 sekundy.
