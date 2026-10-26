@@ -11,10 +11,9 @@ Veřejný checklist pro weby a aplikace postavené s AI agentem. Čtou ho lidé 
 ## Formát položky
 
 ```
-- [ ] **SEO-12** Krátké tvrzení, které jde ověřit. Proč na tom záleží nebo jak to ověřit, nejvýš dvě věty.
+- [ ] Krátké tvrzení, které jde ověřit. Proč na tom záleží nebo jak to ověřit, nejvýš dvě věty.
 ```
 
-- **ID** je prefix kategorie a pořadové číslo. ID se nepřečíslovávají, ani když se položka přesune nebo smaže. Nová položka dostane další volné číslo v kategorii, i když ji vložíš doprostřed souboru. Na ID se odkazují reporty agentů.
 - **Jedna položka, jedna ověřitelná věc.** „Web je rychlý" není položka, „LCP pod 2,5 s" je.
 - **Podmíněná položka** začíná „Když…" („Když web používá GA4: …").
 - **Každý soubor** má pod nadpisem řádek `**Týká se:**`, podle kterého agent kategorii vybírá nebo přeskakuje.

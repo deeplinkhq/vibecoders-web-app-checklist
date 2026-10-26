@@ -21,7 +21,7 @@ Každý soubor v `checklist/` má nahoře řádek **Týká se**. Kategorie, kter
 
 ## 3. Projdi položky
 
-Každá položka má ID (třeba `SEO-12`). Položka, která začíná „Když…", platí jen za dané podmínky.
+Položka, která začíná „Když…", platí jen za dané podmínky.
 
 U každé položky urči stav:
 
@@ -36,7 +36,7 @@ Ověřuj, neodhaduj. Když web běží, použij `curl` nebo prohlížeč. Kontra
 ## 4. Report
 
 1. **Shrnutí:** typ projektu, prošlé a přeskočené kategorie, počet nálezů.
-2. **Nálezy** v tabulce `ID | co chybí | kde | návrh opravy`, seřazené podle dopadu:
+2. **Nálezy** v tabulce `kategorie | co chybí | kde | návrh opravy`, seřazené podle dopadu:
    1. bezpečnost a únik dat (klíče v kódu, databáze bez pravidel přístupu),
    2. věci, které web tiše rozbíjejí (`noindex`, nefunkční formulář, chybějící zálohy),
    3. právo (cookie lišta, zásady zpracování),
