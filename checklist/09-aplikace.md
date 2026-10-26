@@ -4,43 +4,43 @@
 
 ## Než začneš
 
-- [ ] Je rozhodnuté, jestli to vůbec stavět. E-shop s fyzickým zbožím patří na Shoptet nebo Shopify, vibe coduj to, co jinde nekoupíš.
-- [ ] Když aplikace pracuje s daty cizích lidí nebo s penězi: projekt má zadání, rozhodnutí zapsaná v repu, testy, dvě prostředí a vědomé vydávání do produkce. Je to pomalejší, ale tady se chyba platí únikem dat.
+- [ ] Je rozhodnuté, jestli to vůbec stavět. Na běžné věci (e-shop s fyzickým zbožím, rezervace) existují hotové služby. Vibe coduj to, co jinde nekoupíš.
+- [ ] Když aplikace pracuje s daty cizích lidí nebo s penězi: má zadání, testy, oddělený vývoj a produkci a vědomé vydávání nových verzí. Je to pomalejší, ale tady se chyba platí únikem dat.
 
 ## Prostředí
 
-- [ ] Vývoj a produkce jsou oddělené: vlastní databáze, vlastní klíče, vlastní proměnné prostředí, vlastní adresa.
-- [ ] Do produkce jde změna vědomě, přes pull request a preview, ne automaticky s každým commitem do vývoje.
+- [ ] Vývoj a produkce jsou oddělené: vlastní data, vlastní klíče, vlastní adresa.
+- [ ] Nová verze jde do produkce vědomě, až po vyzkoušení, ne automaticky s každou změnou.
 
 ## Přihlášení
 
-- [ ] Adresa webu a povolené adresy pro přesměrování v nastavení přihlášení míří na produkční doménu, ne na `localhost`. Jinak odkazy z potvrzovacích e-mailů a resetu hesla vedou na tvůj počítač.
-- [ ] Potvrzení e-mailu a reset hesla jsou vyzkoušené naostro až po kliknutí na odkaz v doručeném e-mailu. U vlastního SMTP je vypnuté měření prokliků, jinak se jednorázový odkaz spotřebuje.
+- [ ] Odkazy v e-mailech (potvrzení účtu, reset hesla) vedou na produkční adresu, ne na vývojovou.
+- [ ] Registrace, potvrzení e-mailu a reset hesla jsou vyzkoušené naostro, až po kliknutí na odkaz v doručeném e-mailu.
 - [ ] Hláška při přihlášení a resetu hesla neprozrazuje, jestli účet existuje („Pokud účet existuje, poslali jsme e-mail").
-- [ ] Odhlášení a změna hesla zneplatní přihlášení i na serveru, ne jen smažou cookie v prohlížeči.
-- [ ] Uživatel si nemůže sám nastavit roli ani příznak admin. Role se nebere z dat od prohlížeče, v Supabase ani z `user_metadata`, kterou si uživatel může přepsat.
+- [ ] Odhlášení a změna hesla opravdu ukončí přihlášení, ne jen schovají tlačítko.
+- [ ] Uživatel si nemůže sám přidělit vyšší oprávnění (třeba admina). Role se nebere z ničeho, co může uživatel změnit.
 
 ## Soubory
 
-- [ ] Když uživatelé nahrávají soubory: úložiště je privátní, soubory se zobrazují přes dočasné podepsané odkazy a kontroluje se typ i velikost. Veřejné úložiště otevře kdokoli, kdo uhodne adresu.
+- [ ] Když uživatelé nahrávají soubory: soubory nejsou veřejně dostupné každému, kdo uhodne adresu, a kontroluje se jejich typ a velikost.
 
 ## Chyby
 
 - [ ] Když něco selže, uživatel vidí srozumitelnou hlášku a ví, co dál. Ne bílou stránku ani technický výpis.
-- [ ] Selhání se neschovává: v kódu není prázdný `catch` a chyba při načítání dat se netváří jako prázdný seznam nebo „nejsi přihlášený". Je to nová kategorie OWASP Top 10 2025 a agent ji dělá běžně.
+- [ ] Chyba se neschovává. Selhání při načítání dat se netváří jako prázdný seznam nebo „nejsi přihlášený". Agent chyby rád tiše spolkne.
 
 ## E-maily
 
-- [ ] Když přihlášení běží přes Supabase: je nastavený vlastní SMTP. Výchozí služba posílá jen členům týmu projektu a nejvýš 2 e-maily za hodinu, registrace cizích lidí neprojde (stav 10/2026).
-- [ ] Když aplikace posílá e-maily: chodí z vlastní domény přes službu na odesílání (Resend a podobně), s nastavenými DNS záznamy SPF a DKIM.
-- [ ] Když aplikace posílá e-maily: klíč pro vývoj a pro produkci je jiný a z vývoje nechodí e-maily skutečným lidem.
+- [ ] Když aplikace posílá e-maily: chodí z vlastní domény, s nastaveným ověřením odesílatele (SPF, DKIM), jinak končí ve spamu.
+- [ ] Z vývoje nechodí e-maily skutečným lidem.
+- [ ] Limity na počet odeslaných e-mailů a registrací jsou nastavené na reálný provoz. Výchozí limity služeb bývají nízké a registrace pak potichu přestanou fungovat.
 
 ## Platby
 
-- [ ] Když aplikace přijímá platby: vývoj běží proti testovacímu režimu platební brány (Stripe sandbox), testovací a ostré klíče jsou oddělené.
-- [ ] Když aplikace přijímá platby: stav platby se bere z webhooku od brány, ne z toho, že se uživatel vrátil na stránku „Děkujeme". Webhook ověřuje podpis.
-- [ ] Když aplikace přijímá platby: webhook zpracuje stejnou událost jen jednou (eviduje její ID) a nespoléhá na pořadí. Stripe píše, že událost může přijít víckrát a pořadí není zaručené.
+- [ ] Když aplikace přijímá platby: vývoj běží v testovacím režimu platební brány a testovací a ostré klíče jsou oddělené.
+- [ ] Zaplaceno je, až když to potvrdí platební brána, ne když se uživatel vrátil na stránku „Děkujeme".
+- [ ] Stejné potvrzení platby zpracované dvakrát nevytvoří dvě objednávky.
 
 ## Obsah
 
-- [ ] Když texty mění někdo, kdo nepracuje s agentem: obsah je v CMS (Sanity a podobně), ne natvrdo v kódu.
+- [ ] Když texty mění někdo, kdo nepracuje s agentem: má na to jednoduchý nástroj a texty nejsou natvrdo v kódu.

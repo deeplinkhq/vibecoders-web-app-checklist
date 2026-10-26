@@ -16,10 +16,10 @@ Veřejný checklist pro weby a aplikace postavené s AI agentem. Čtou ho lidé 
 ```
 
 - **Jedna položka, jedna ověřitelná věc.** „Web je rychlý" není položka, „LCP pod 2,5 s" je.
-- **Podmíněná položka** začíná „Když…" („Když web používá GA4: …").
+- **Podmíněná položka** začíná „Když…" („Když aplikace přijímá platby: …").
 - **Každý soubor** má pod nadpisem řádek `**Týká se:**`, podle kterého agent kategorii vybírá nebo přeskakuje.
 - **Čísla a pravidla, která se mění** (limity služeb, ceny, pravidla Googlu), mají u sebe datum, k jakému platí.
-- **Nástroje jsou příklady**, ne doporučený stack.
+- **Obecně, bez vazby na technologii.** Žádné konkrétní frameworky, hostingy, databáze ani služby. Položka popisuje, čeho chceš dosáhnout, ne jak to udělat v konkrétním nástroji. Výjimka jsou platformy, kde lidé reálně hledají (Google, Seznam).
 
 ## Psaní
 

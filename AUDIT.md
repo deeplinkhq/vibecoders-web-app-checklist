@@ -4,7 +4,7 @@ Instrukce pro agenta, který kontroluje cizí projekt. Uživatel tě sem poslal,
 
 ## 1. Zjisti, co je to za projekt
 
-Než otevřeš první kategorii, projdi projekt (soubory, `package.json`, konfiguraci hostingu, nasazenou adresu, pokud existuje) a urči:
+Než otevřeš první kategorii, projdi projekt (soubory, konfiguraci, nasazenou adresu, pokud existuje) a urči:
 
 - **Typ:** statický web, web s formulářem, aplikace s přihlášením, aplikace s platbami.
 - **Stack a hosting.**

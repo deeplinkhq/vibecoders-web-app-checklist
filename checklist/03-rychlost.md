@@ -4,36 +4,28 @@
 
 ## Metriky
 
-- [ ] LCP pod 2,5 s, INP pod 200 ms, CLS pod 0,1. FID už neexistuje, v roce 2024 ho nahradilo INP.
-- [ ] Měřeno v PageSpeed Insights nebo Lighthouse. Google hodnotí 75. percentil reálných návštěv za 28 dní, ne tvůj počítač na optice. Nový web reálná data ještě nemá, vidíš jen laboratorní výsledek.
+- [ ] Hlavní obsah se načte do 2,5 s, stránka reaguje na kliknutí do 200 ms a při načítání neposkakuje (Core Web Vitals: LCP, INP, CLS).
+- [ ] Rychlost je změřená na mobilu a na pomalejším připojení, ne jen na tvém počítači na optice. Nový web ještě nemá data od reálných návštěvníků, vidíš jen laboratorní měření.
 
 ## Obrázky
 
 - [ ] Žádný obrázek není v originále z foťáku. 4000x3000 px a 6 MB je 20 až 40krát víc, než je potřeba.
-- [ ] Fotky jsou ve WebP, případně AVIF (o 20 až 30 % menší). PNG jen jako záloha přes `<picture>`.
-- [ ] Loga, ikony a piktogramy jsou SVG. Nerozmažou se na displejích s vysokým rozlišením.
-- [ ] Úvodní obrázek má šířku 1600 až 1920 px a nejvýš 200 KB, ideálně 100 až 150 KB.
-- [ ] Ostatní obrázky mají pod 100 až 200 KB, kvalita komprese 80 až 85.
+- [ ] Fotky jsou v moderním formátu (WebP, AVIF), ne v PNG nebo velkém JPG.
+- [ ] Loga a ikony jsou ve vektoru (SVG). Nerozmažou se na žádném displeji.
+- [ ] Úvodní obrázek má nejvýš 200 KB, ostatní obrázky pod 100 až 200 KB.
 - [ ] Celá stránka má ideálně pod 1 MB, tvrdý strop 2 MB.
-- [ ] Žádný velký obrázek není zmenšený jen přes CSS. Prohlížeč stáhne celý soubor a pak ho zahodí.
-- [ ] Každý `<img>` má `width` a `height` podle skutečné velikosti souboru (a v CSS `height: auto`). Chybějící rozměry jsou nejčastější příčina poskakování stránky (CLS), týká se 62 % mobilních stránek.
-- [ ] Úvodní obrázek má `fetchpriority="high"` a nikdy `loading="lazy"`.
-- [ ] Všechno pod zlomem má `loading="lazy"`. Pravidlo: vidím to bez scrollování? Pak se načítá hned.
-- [ ] `srcset` a `sizes` jen u úvodního obrázku a velkých fotek přes celou šířku. U malých obrázků je to zbytečná složitost.
+- [ ] Žádný velký obrázek není jen zmenšený stylem. Prohlížeč stáhne celý soubor a pak ho zahodí.
+- [ ] Obrázky mají zadané rozměry, takže stránka při načítání neposkakuje. Je to nejčastější příčina poskakování.
+- [ ] Úvodní obrázek se načítá hned a přednostně, obrázky níž na stránce až při rolování.
 
 ## Fonty
 
-- [ ] Fonty jsou v projektu, ne načítané z Google Fonts. Medián zlepšení LCP zhruba 180 ms a odpadne problém s GDPR.
-- [ ] Fonty jsou ve WOFF2, se sadou znaků `latin-ext` (jinak chybí česká diakritika) a jen v řezech, které se opravdu používají.
-- [ ] `font-display: swap`, jinak je text chvíli neviditelný.
-- [ ] Přednačtený (`preload`) je jen jeden hlavní řez, s atributem `crossorigin`. Přednačítání všeho konkuruje úvodnímu obrázku.
+- [ ] Fonty jsou součástí webu, ne načítané z cizího serveru. Je to rychlejší a odpadne problém s GDPR.
+- [ ] Fonty obsahují českou diakritiku a jsou jen v řezech, které se opravdu používají.
+- [ ] Text je vidět hned, i než se font načte.
 - [ ] Zváženo, jestli nestačí systémový font. Nejrychlejší font je žádný font.
 
-## Vývojářské nástroje v produkci
+## Vývojové nástroje v produkci
 
-- [ ] Na produkci neběží Tailwind Play CDN (`cdn.tailwindcss.com`). Generuje CSS až v prohlížeči a rozbíjí LCP i INP. Místo něj build, třeba samostatné Tailwind CLI s `--minify` (10 až 30 KB místo stovek).
-- [ ] Na produkci není vývojová verze knihoven ani zdrojové mapy (`.map`), pokud je tam nechceš schválně.
-
-## Co za tebe udělá hosting
-
-- [ ] Víš, co hosting dělá sám a co ne. Moderní hosting (Vercel, Netlify, Cloudflare Pages) řeší kompresi, CDN, HTTPS a HTTP/2. Nezmenší obrázky u statického webu, nezbuilduje CSS a nespraví obsah. Rychlý hosting nespraví pomalý web.
+- [ ] Na produkci neběží nic, co je určené jen pro vývoj: knihovny, které generují styly až v prohlížeči, vývojové verze knihoven, ladicí výpisy. Agent je použije, protože je to nejrychlejší cesta k funkčnímu výsledku.
+- [ ] Rychlý hosting nespraví pomalý web. Kompresi a doručení řeší hosting, velikost obrázků a množství kódu ne.

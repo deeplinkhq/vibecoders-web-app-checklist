@@ -38,7 +38,7 @@ Opravuj pak po kategoriích, ne všechno naráz. Po každém kole nech agenta ko
 
 ## Stav
 
-Stav k říjnu 2026. Pravidla vyhledávačů, limity služeb a ceny se mění, proto u nich je, k jakému datu platí. Konkrétní nástroje a služby jsou příklady, ne doporučený stack. Právní část je psaná pro Českou republiku a není to právní poradenství.
+Stav k říjnu 2026. Pravidla vyhledávačů, limity služeb a ceny se mění, proto u nich je, k jakému datu platí. Checklist je obecný, nezávisí na tom, v čem a kde web stavíš. Právní část je psaná pro Českou republiku a není to právní poradenství.
 
 Ze kterých zdrojů checklist vychází, je v [zdroje.md](zdroje.md).
 

@@ -4,27 +4,24 @@
 
 ## Jak se nasazuje
 
-- [ ] Změny nejdou přímo do `main`. Každá změna je větev a pull request, i když na projektu pracuješ sám. Preview adresa od hostingu je zkušebna.
-- [ ] Víš, jak vrátit rozbitou produkci: rychlý návrat na předchozí verzi v hostingu (na Vercelu Instant Rollback), pak Revert pull requestu. Nikdy `git reset` a force push.
-- [ ] Preview nasazení nejsou volně přístupná (na Vercelu Deployment Protection) a nemíří na produkční databázi. Adresa preview se dá najít.
-- [ ] Tarif hostingu odpovídá použití. Vercel Hobby je jen pro nekomerční provoz, web firmy patří na placený plán (stav 10/2026).
+- [ ] Změny se nejdřív vyzkouší na zkušební adrese a teprve pak jdou na produkci.
+- [ ] Víš, jak rychle vrátit předchozí verzi, když nová něco rozbije.
+- [ ] Zkušební verze nejsou volně přístupné a nepracují s produkčními daty.
+- [ ] Tarif hostingu odpovídá použití. Bezplatné tarify často nepovolují komerční provoz.
 
 ## Doména a DNS
 
-- [ ] Je vybraná jedna varianta domény (s www, nebo bez) a druhá je 301 přesměrovaná.
-- [ ] Hlavní doména míří přes záznam `A`, `www` přes `CNAME`. Hodnoty jsou opsané z dashboardu hostingu, ne z návodu na internetu.
-- [ ] Certifikát se nekupuje, moderní hosting ho vystaví a obnovuje sám.
-- [ ] Zkontrolovaný záznam `CAA`. Starý záznam pro jinou certifikační autoritu tiše zablokuje vystavení certifikátu.
-- [ ] Při změně DNS je den předem snížené TTL na 300. Ověřeno nezávisle (dnschecker.org, `dig`) a z mobilních dat, ne jen z domácí wifi.
+- [ ] Je vybraná jedna varianta domény (s www, nebo bez) a druhá je přesměrovaná.
+- [ ] Fungují všechny čtyři varianty adresy (http, https, s www, bez www) a všechny končí na té jedné správné.
+- [ ] Certifikát se nekupuje, hosting ho dnes vystaví a obnovuje sám.
+- [ ] Změna DNS je ověřená nezávisle a z mobilních dat, ne jen z domácí wifi. Projevit se může za minuty i za den.
 
 ## E-mail na doméně
 
-- [ ] Při přechodu na nameservery hostingu jsou ručně přenesené záznamy `MX`, `SPF` a `DKIM`. Tohle je nejčastější způsob, jak si při nasazení webu vypnout vlastní e-mail.
-- [ ] Když se z domény odesílají e-maily: funguje SPF a DKIM, `DMARC` se přidává až po 48 hodinách bez problémů.
+- [ ] Při přesunu domény nebo DNS jsou přenesené záznamy pro e-mail. Tohle je nejčastější způsob, jak si při spuštění webu vypnout vlastní poštu.
 
 ## Drobnosti, které chybí skoro vždycky
 
-- [ ] Favicon ve třech souborech: `favicon.ico`, `favicon.svg` a `apple-touch-icon.png` (180x180 px, bez průhlednosti, jinak ji iOS podloží černou). Všechny jsou odkázané v `<head>` a ikona je čitelná i v 16 px.
-- [ ] Vlastní stránka 404, která vypadá jako zbytek webu a má odkaz na hlavní stránku a hlavní akci.
-- [ ] Neexistující adresa vrací stav 404, ne přesměrování na hlavní stránku.
-- [ ] Fungují všechny čtyři varianty adresy (http, https, s www, bez www) a všechny končí na té jedné správné.
+- [ ] Web má favicon, čitelný i v malé velikosti, a ikonu pro přidání na plochu telefonu.
+- [ ] Web má vlastní stránku 404, která vypadá jako zbytek webu a má odkaz zpátky.
+- [ ] Neexistující adresa vrací chybu 404, ne přesměrování na úvodní stránku.

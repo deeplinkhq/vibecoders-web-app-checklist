@@ -4,55 +4,47 @@
 
 ## Mobil
 
-- [ ] V hlavičce je `<meta name="viewport" content="width=device-width, initial-scale=1">`.
-- [ ] Přibližování není zakázané, nikde není `user-scalable=no`.
-- [ ] Otestované šířky 320, 375, 390, 768, 1024, 1280 a 1440 px.
-- [ ] Nikde není vodorovný scroll. Rychlý test v konzoli: `document.documentElement.scrollWidth > document.documentElement.clientWidth` musí vrátit `false`.
-- [ ] Široké prvky (iframe, tabulky) mají vlastní obal s `overflow-x: auto`.
-- [ ] Text na mobilu má aspoň 16 px. Pod tuhle hranici Safari na iPhonu po kliknutí do pole stránku samo přiblíží.
-- [ ] Úvodní sekce i s tlačítkem se vejde na výšku malého telefonu.
+- [ ] Web se přizpůsobí šířce telefonu a přibližování není zakázané.
+- [ ] Otestované šířky od 320 px (malý telefon) po 1440 px (velký monitor).
+- [ ] Nikde není vodorovný scroll. Široké prvky (tabulky, vložené mapy) se posouvají uvnitř sebe, ne celá stránka.
+- [ ] Text na mobilu má aspoň 16 px. Pod tuhle hranici iPhone po kliknutí do pole stránku samo přiblíží.
+- [ ] Úvodní sekce i s hlavním tlačítkem se vejde na výšku malého telefonu.
 
 ## Dotykové cíle
 
-- [ ] Klikatelné prvky mají aspoň 24x24 px (WCAG 2.2 AA), reálný cíl je 44 až 48 px.
-- [ ] Mezi sousedními cíli je aspoň 8 px. Nejčastěji chybí u ikon v patičce.
-- [ ] Telefon a e-mail jsou klikatelné odkazy (`tel:`, `mailto:`) s dostatečným okrajem.
+- [ ] Tlačítka a odkazy jsou dost velké na prst, ideálně 44 až 48 px, a mezi sousedními je mezera. Nejčastěji chybí u ikon v patičce.
+- [ ] Telefon a e-mail jsou klikatelné odkazy.
 
 ## Kontrast
 
-- [ ] Běžný text má kontrast aspoň 4,5:1, velký text (24 px, nebo 18,66 px tučně) aspoň 3:1. Tuhle chybu má 79 % domovských stránek.
-- [ ] Rámečky formulářových polí a ikony, které nesou význam, mají aspoň 3:1.
-- [ ] Pozor na šedé texty z Tailwindu: `text-gray-400` na bílé neprojde (asi 2,8:1), `text-gray-500` projde těsně.
-- [ ] Text přes fotku má ztmavení nebo přechod. Jinak kontrast závisí na tom, jakou fotku tam zrovna dáš.
+- [ ] Běžný text má kontrast aspoň 4,5:1, velký text aspoň 3:1. Tuhle chybu má 79 % domovských stránek, nejčastěji u světle šedého textu.
+- [ ] Rámečky formulářových polí a ikony, které nesou význam, mají kontrast aspoň 3:1.
+- [ ] Text přes fotku má ztmavení. Jinak kontrast závisí na tom, jakou fotku tam zrovna dáš.
 - [ ] Žádná informace není předaná jen barvou.
 
-## Popisky obrázků a struktura
+## Obrázky a struktura
 
-- [ ] Každý `<img>` má atribut `alt`. Dekorativní obrázek má `alt=""`, prázdný, ale přítomný.
-- [ ] Alt popisuje funkci, ne vzhled. Uvnitř odkazu popisuje, kam odkaz vede.
-- [ ] Na stránce je právě jeden `<h1>` a nadpisy nepřeskakují úrovně. Úroveň nadpisu je obsah, ne velikost písma.
-- [ ] Stránka používá `<header>`, jeden `<main>`, `<nav>`, `<section>` a `<footer>`.
-- [ ] `<html lang="cs">` (nebo jiný jazyk webu). Bez toho čte českou stránku anglická hlasová syntéza.
-- [ ] Co provádí akci, je `<button>`. Co vede jinam, je `<a href>`. Klikací `<div>` neexistuje.
+- [ ] Každý obrázek má popisek (alt). Dekorativní obrázek má popisek prázdný.
+- [ ] Popisek říká, co obrázek sděluje, ne jak vypadá. U obrázku v odkazu říká, kam odkaz vede.
+- [ ] Stránka má jeden hlavní nadpis a nadpisy nepřeskakují úrovně. Úroveň nadpisu je obsah, ne velikost písma.
+- [ ] Stránka má nastavený jazyk. Bez toho čte českou stránku anglická hlasová syntéza.
+- [ ] Co provádí akci, je tlačítko. Co vede jinam, je odkaz. Klikací obyčejný blok neexistuje.
 
 ## Klávesnice
 
-- [ ] Celá stránka jde projít Tabem a je vždy vidět, kde jsi.
-- [ ] Nikde není `outline: none` bez náhrady, použij `:focus-visible`. Tohle je nejčastější způsob, jak vibe coded web znepřístupnit.
-- [ ] Prvek, na kterém je focus, nezakrývá přilepená hlavička ani cookie lišta (WCAG 2.2).
-- [ ] Na začátku stránky je odkaz „Přeskočit na obsah", viditelný při Tabu. Bez něj musí člověk s klávesnicí na každé stránce protabovat celou navigaci.
-- [ ] Zavřené mobilní menu není tabovatelné a otevřené jde zavřít Escapem.
-- [ ] Focus nikde neuvízne, ani ve vloženém iframu.
+- [ ] Celá stránka jde projít Tabem a je vždy vidět, kde jsi. Agent rád zvýraznění fokusu vypne, protože „ruší design".
+- [ ] Na začátku stránky je odkaz „Přeskočit na obsah", viditelný při Tabu.
+- [ ] Prvek s fokusem nezakrývá přilepená hlavička ani cookie lišta.
+- [ ] Mobilní menu jde zavřít Escapem a zavřené se Tabem neprochází.
 
 ## Pohyb
 
-- [ ] Web respektuje `prefers-reduced-motion`. Vestibulární potíže a migrény má přes 20 % dospělých. Stačí globální pojistka v CSS, která v `@media (prefers-reduced-motion: reduce)` zkrátí animace a přechody na 0,01 ms.
+- [ ] Web respektuje nastavení „omezit pohyb" v systému. Vestibulární potíže a migrény má přes 20 % dospělých.
 - [ ] Nic se nehýbe déle než 5 sekund bez možnosti zastavit. Nic nebliká víc než 3krát za sekundu.
 
 ## Jak kontrolovat s agentem
 
-- [ ] Web prošel Lighthouse (záložka v Chrome DevTools) a WAVE nebo axe. Agentovi předávej názvy pravidel (`color-contrast`, `label`, `image-alt`, `frame-title`, `heading-order`), ne skóre.
-- [ ] K opravě kontrastu přidej omezení, jinak agent překope barvy podle sebe: „drž aspoň 4,5:1 a neměň barvu značky". Po opravě kontrast přeměř, agent ho jen odhaduje.
-- [ ] Neopravují se falešné poplachy: nálezy uvnitř cizího iframu (agent rozbije vložení), oranžová upozornění ve WAVE, kontrast neaktivních prvků, skryté mobilní menu.
-- [ ] Oprava není jen umlčení nástroje. `<div role="button">` nález schová, ale klávesnicí to pořád nejde ovládat. Špatná ARIA je horší než žádná.
-- [ ] Zbytek prošel člověk. Automat (axe) najde zhruba 57 % chyb, smysluplnost popisků, pořadí fokusu a srozumitelnost hlášek nepozná.
+- [ ] Web prošel automatickým auditem přístupnosti a agent dostal konkrétní nálezy, ne skóre.
+- [ ] K opravě kontrastu je přidané omezení, jinak agent překope barvy podle sebe: „drž aspoň 4,5:1 a neměň barvu značky". Po opravě je kontrast přeměřený, agent ho jen odhaduje.
+- [ ] Oprava není jen umlčení nástroje. Když agent přidá blok s rolí tlačítka, nález zmizí, ale klávesnicí to pořád nejde ovládat.
+- [ ] Zbytek prošel člověk. Automat najde zhruba polovinu chyb, smysluplnost popisků a srozumitelnost hlášek nepozná.
