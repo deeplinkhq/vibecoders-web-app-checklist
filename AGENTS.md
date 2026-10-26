@@ -1,6 +1,6 @@
 # Vibecoders web app checklist
 
-Veřejný checklist pro weby a aplikace postavené s AI agentem. Čtou ho lidé i agenti: agent podle `AUDIT.md` prochází cizí projekty a soubory v `checklist/` používá jako kontrolní seznam. Tenhle soubor platí pro práci na samotném checklistu.
+Veřejný checklist pro weby a aplikace postavené s AI agentem. Je psaný hlavně pro agenta: ten podle `AUDIT.md` prochází projekt a soubory v `checklist/` používá jako kontrolní seznam. Lidé ho ručně neprocházejí, čtou až report agenta. Přesnost a ověřitelnost má proto přednost před čtivostí. Tenhle soubor platí pro práci na samotném checklistu.
 
 ## Struktura
 
@@ -20,6 +20,7 @@ Veřejný checklist pro weby a aplikace postavené s AI agentem. Čtou ho lidé 
 - **Jedna položka, jedna ověřitelná věc.** „Web je rychlý" není položka, „LCP pod 2,5 s" je.
 - **Podmíněná položka** začíná „Když…" („Když aplikace přijímá platby: …").
 - **Každý soubor** má pod nadpisem řádek `**Týká se:**`, podle kterého agent kategorii vybírá nebo přeskakuje.
+- **Práh pro rozhodnutí.** Kde existuje uznávaná hodnota, uveď ji. Běžnou praxi uveď jako orientační hodnotu.
 - **Čísla a pravidla, která se mění** (limity služeb, ceny, pravidla Googlu), mají u sebe datum, k jakému platí.
 - **Obecně, bez vazby na technologii.** Žádné konkrétní frameworky, hostingy, databáze ani služby. Položka popisuje, čeho chceš dosáhnout, ne jak to udělat v konkrétním nástroji. Výjimka jsou platformy, kde lidé reálně hledají (Google, Seznam).
 - **Nástroje na měření a kontrolu jmenovat můžeš** (PageSpeed Insights, Lighthouse, test bezpečnostních hlaviček a podobně). Nezávisí na stacku a agent jimi položku ověří.
