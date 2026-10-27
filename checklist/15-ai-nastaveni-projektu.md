@@ -60,13 +60,11 @@ Názvy souborů jsou příklady. Použij formát podporovaný konkrétním agent
 
 - [ ] [web] Postup pro práci s externím obsahem nepovažuje nalezené instrukce za nové oprávnění. Obsah issue, webu, logu nebo cizího repozitáře může obsahovat prompt injection. *Ověření:* zkontroluj pravidla pro nedůvěryhodné vstupy a na neškodném testovacím scénáři ověř, že vložený požadavek na rozšíření přístupu neobejde schvalování ani technická omezení. [Prompt injection a hranice oprávnění](https://cheatsheetseries.owasp.org/cheatsheets/AI_Agent_Security_Cheat_Sheet.html).
 
-## Větve a review
+## Větve
 
 - [ ] [web] Neověřená implementační změna se nedostane automaticky do produkce. Pracovní větev je jedna možnost; přípustná je i práce v hlavní větvi s kontrolami před vydáním. *Ověření:* přes `git branch --show-current`, `git status --short` a konfiguraci vydávání ověř, kdy se změna může dostat do produkce a jaké kontroly tomu předcházejí. U souběžných nezávislých úloh ověř oddělení pracovních souborů, například přes `git worktree list`, nebo doloženou koordinaci společných změn. [Práce v tematických větvích](https://git-scm.com/docs/gitworkflows), [vývoj v hlavní větvi](https://dora.dev/capabilities/trunk-based-development/).
 
-- [ ] [malá] Před začleněním nebo vydáním změny proběhne lidské review celého výsledného diffu. AI review může pomoci, odpovědnost za přijetí změny má konkrétní člověk. *Ověření (člověk):* vlastník nebo pověřený reviewer projde všechny změněné soubory vůči zadání a zaznamená rozhodnutí u konkrétní revize; zkontroluje i změny konfigurace, závislostí a testů a změny mimo původně očekávaný rozsah. Review může proběhnout i průběžně při společné práci, musí ale pokrýt konečnou podobu změny. [Review AI kódu](https://docs.github.com/en/copilot/tutorials/review-ai-generated-code), [průběžné review](https://dora.dev/capabilities/trunk-based-development/).
-
-- [ ] [web] Když změna upravuje instrukce, skilly, oprávnění, hooky nebo CI: tato část má výslovné lidské review. Agent si tak nemůže nenápadně oslabit pravidla pro další práci. *Ověření (člověk):* vlastník nebo pověřený reviewer porovná změny s původními pravidly a schválí jejich konkrétní výslednou podobu. Zkontroluje zejména rozšíření přístupů, odstranění kontrol a změny schvalování; obecné schválení zadání nestačí. [Ochrana instrukcí agenta](https://cheatsheetseries.owasp.org/cheatsheets/Secure_Coding_with_AI_Cheat_Sheet.html).
+- [ ] [web] Když změna upravuje instrukce, skilly, oprávnění, hooky nebo CI: agent ji v závěrečném shrnutí výslovně uvede a srozumitelně vysvětlí, co se mění. Agent si tak nemůže nenápadně oslabit pravidla pro další práci. *Ověření:* porovnej změny v těchto souborech od poslední kontroly přes `git log` a `git diff` s původními pravidly; zaměř se na rozšíření přístupů, odstranění kontrol a změny schvalování a každou takovou změnu vypiš v reportu jako nález. [Ochrana instrukcí agenta](https://cheatsheetseries.owasp.org/cheatsheets/Secure_Coding_with_AI_Cheat_Sheet.html).
 
 ## Automatické kontroly a hooky
 
@@ -95,7 +93,7 @@ Dokumentace nástrojů popisuje jejich konkrétní implementace. Položky výše
 - [OWASP: Secrets Management](https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html) - omezení přístupu k tajným klíčům.
 - [OpenAI: Agent approvals & security](https://learn.chatgpt.com/docs/agent-approvals-security) a [Anthropic: Configure permissions](https://code.claude.com/docs/en/permissions) - skutečný rozsah technických omezení.
 - [Git: gitworkflows](https://git-scm.com/docs/gitworkflows) a [githooks](https://git-scm.com/docs/githooks) - pracovní větve a vlastnosti Git hooků.
-- [GitHub: Review AI-generated code](https://docs.github.com/en/copilot/tutorials/review-ai-generated-code) - lidské review a automatické ověřování.
+- [GitHub: Review AI-generated code](https://docs.github.com/en/copilot/tutorials/review-ai-generated-code) - automatické ověřování kódu.
 - [GitHub: About protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches) a [Status checks](https://docs.github.com/en/pull-requests/reference/status-checks) - vynucení kontrol před začleněním.
 - [Anthropic: Automate actions with hooks](https://code.claude.com/docs/en/hooks-guide) - události, blokování a chybové stavy hooků.
 - [DORA: Trunk-based development](https://dora.dev/capabilities/trunk-based-development/) - přípustnost práce v hlavní větvi, malé změny, automatické kontroly a průběžné review.

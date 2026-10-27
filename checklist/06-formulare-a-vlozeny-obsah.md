@@ -76,8 +76,6 @@ Rezervace prostoru a odložené načítání viz [Rychlost](03-rychlost.md), sou
 
 - [ ] [web] Když předtočené video se zvukem předává informace: má synchronizované titulky zachycující řeč i významové zvuky. Výjimku podle WCAG 1.2.2 posuzuj jen u jasně označené mediální alternativy existujícího textu. *Ověření (člověk):* přehraj video bez zvuku a porovnej titulky s původní zvukovou stopou; samotná existence automatických titulků nedokazuje jejich správnost.
 
-- [ ] [web] Když předtočené video obsahuje podstatnou vizuální informaci, kterou zvuk nesděluje, a nejde o jasně označenou mediální alternativu existujícího textu: tato informace zazní v hlavní stopě nebo ve zvukovém popisu. U videa zcela bez zvuku může podle WCAG 1.2.1 stačit odpovídající textová alternativa; u videa se zvukem samotný textový přepis požadavek WCAG 1.2.5 na úrovni AA nesplní. *Ověření (člověk):* porovnej obraz se zvukem a ověř, že důležité texty, děje a výsledky jsou vyslovené v hlavní stopě nebo dostupné ve zvukovém popisu; u videa zcela bez zvuku ověř úplnost a pořadí informací v textové alternativě, pokud je použita; případnou výjimku dolož.
-
 ## Zdroje
 
 - [W3C WAI: Forms Tutorial](https://www.w3.org/WAI/tutorials/forms/) - omezení požadovaných údajů a základní zásady formulářů.
@@ -109,5 +107,5 @@ Rezervace prostoru a odložené načítání viz [Rychlost](03-rychlost.md), sou
 - [ÚOOÚ: Cookies, otázky a odpovědi](https://uoou.gov.cz/verejnost/qa-otazky-a-odpovedi/cookies) - předchozí souhlas, technické výjimky a podobné technologie; stav 10/2026.
 - [RFC 5545, oddíl 3.3.5](https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.5) - časové zóny a rozdíl mezi pevným a „floating“ časem.
 - [W3C WAI: Captions/Subtitles](https://www.w3.org/WAI/media/av/captions/) a [Description of Visual Information](https://www.w3.org/WAI/media/av/description/) - titulky a zvukový popis.
-- [WCAG 1.2.1: Audio-only and Video-only](https://www.w3.org/TR/WCAG22/#audio-only-and-video-only-prerecorded) a [1.2.5: Audio Description](https://www.w3.org/TR/WCAG22/#audio-description-prerecorded) - rozdílné požadavky na video zcela bez zvuku a video se zvukem.
+- [WCAG 1.2.1: Audio-only and Video-only](https://www.w3.org/TR/WCAG22/#audio-only-and-video-only-prerecorded) - video zcela bez zvuku.
 - [WCAG 1.4.2: Audio Control](https://www.w3.org/WAI/WCAG22/Understanding/audio-control.html) - automatický zvuk delší než 3 sekundy.
