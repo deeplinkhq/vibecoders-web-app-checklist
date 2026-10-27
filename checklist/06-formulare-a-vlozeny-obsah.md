@@ -4,79 +4,79 @@
 
 ## Pole a instrukce
 
-- [ ] Každé pole má srozumitelný popisek propojený s ovládacím prvkem. U běžných formulářových polí je popisek viditelný i po vyplnění; placeholder ho nenahrazuje. *Ověření:* zkontroluj vazbu `label` a pole nebo odpovídající přístupné pojmenování; pomocí axe vyhledej chybějící popisky a neplatné vazby.
+- [ ] [web] Každé pole má srozumitelný popisek propojený s ovládacím prvkem. U běžných formulářových polí je popisek viditelný i po vyplnění; placeholder ho nenahrazuje. *Ověření:* zkontroluj vazbu `label` a pole nebo odpovídající přístupné pojmenování; pomocí axe vyhledej chybějící popisky a neplatné vazby.
 
-- [ ] Když jednotlivé volby dávají smysl až se společnou otázkou: skupina má programově dostupný název. Samostatné popisky „Ano“ a „Ne“ bez otázky nestačí. *Ověření:* zkontroluj například `fieldset` s `legend` nebo odpovídající pojmenovanou skupinu v accessibility tree.
+- [ ] [web] Když jednotlivé volby dávají smysl až se společnou otázkou: skupina má programově dostupný název. Samostatné popisky „Ano“ a „Ne“ bez otázky nestačí. *Ověření:* zkontroluj například `fieldset` s `legend` nebo odpovídající pojmenovanou skupinu v accessibility tree.
 
-- [ ] Povinná pole jsou rozpoznatelná před odesláním vizuálně i programově. Samotná barva povinnost nesděluje. *Ověření:* porovnej viditelné označení s `required` nebo odpovídajícím stavem přístupnosti a s pravidly backendu.
+- [ ] [web] Povinná pole jsou rozpoznatelná před odesláním vizuálně i programově. Samotná barva povinnost nesděluje. *Ověření:* porovnej viditelné označení s `required` nebo odpovídajícím stavem přístupnosti a s pravidly backendu.
 
-- [ ] Když pole vyžaduje konkrétní formát nebo má omezující limit: instrukce jsou dostupné před zadáním hodnoty. U příloh uveď povolené typy a maximální velikost. *Ověření:* porovnej instrukce s implementovanou validací a zkontroluj jejich propojení s polem, například přes `aria-describedby`.
+- [ ] [web] Když pole vyžaduje konkrétní formát nebo má omezující limit: instrukce jsou dostupné před zadáním hodnoty. U příloh uveď povolené typy a maximální velikost. *Ověření:* porovnej instrukce s implementovanou validací a zkontroluj jejich propojení s polem, například přes `aria-describedby`.
 
-- [ ] Vstupní typ odpovídá zadávaným údajům. Telefon, PSČ a jiné identifikátory nejsou množství určená k aritmetice. *Ověření:* projdi `type` a `inputmode`; u telefonu ověř odpovídající telefonní vstup, u číselného identifikátoru zachování počátečních nul.
+- [ ] [web] Vstupní typ odpovídá zadávaným údajům. Telefon, PSČ a jiné identifikátory nejsou množství určená k aritmetice. *Ověření:* projdi `type` a `inputmode`; u telefonu ověř odpovídající telefonní vstup, u číselného identifikátoru zachování počátečních nul.
 
-- [ ] Když formulář sbírá běžné osobní údaje o vyplňujícím: účel polí je označen platnými hodnotami `autocomplete`. Samotné `type="email"` neurčuje, čí e-mail formulář požaduje. *Ověření:* porovnej pole s účely podle WCAG 1.3.5 a zkontroluj například `name`, `email`, `tel` nebo `postal-code`; rozliš i opakující se adresní skupiny.
+- [ ] [web] Když formulář sbírá běžné osobní údaje o vyplňujícím: účel polí je označen platnými hodnotami `autocomplete`. Samotné `type="email"` neurčuje, čí e-mail formulář požaduje. *Ověření:* porovnej pole s účely podle WCAG 1.3.5 a zkontroluj například `name`, `email`, `tel` nebo `postal-code`; rozliš i opakující se adresní skupiny.
 
 ## Ovládání formulářů a widgetů
 
-- [ ] Když proces potřebuje údaj zadaný v předchozím kroku: nabídne ho předvyplněný nebo k výběru. Výjimkou je nezbytné opakování, bezpečnost nebo údaj, který už není platný. *Ověření (prohlížeč):* projdi všechny kroky včetně návratu zpět a ověř, že stejné platné údaje nemusíš znovu ručně opisovat.
+- [ ] [web] Když proces znovu vyžaduje údaj, který už uživatel zadal nebo dostal v rámci téhož procesu: nabídne ho předvyplněný nebo k výběru. Výjimkou je nezbytné opakování, bezpečnost nebo údaj, který už není platný. *Ověření (prohlížeč):* projdi všechny kroky včetně návratu zpět a ověř, že stejné platné údaje nemusíš znovu ručně opisovat; zahrň i údaje poskytnuté systémem.
 
-- [ ] Když formulář omezuje dobu vyplňování: splňuje některou možnost WCAG 2.2.1. Limit jde předem vypnout, předem nastavit alespoň na desetinásobek výchozí doby, nebo prodloužit jednoduchou akcí s nejméně 20 sekundami na reakci a alespoň deseti prodlouženími; výjimkou je nezbytný limit, neoddělitelná událost v reálném čase nebo limit delší než 20 hodin. *Ověření:* zkontroluj časovače a expiraci na klientu i serveru a testem s řízeným časem ověř vybranou možnost; případnou výjimku dolož.
+- [ ] [web] Když formulář omezuje dobu vyplňování: splňuje některou možnost WCAG 2.2.1. Limit jde předem vypnout, předem nastavit alespoň na desetinásobek výchozí doby, nebo prodloužit jednoduchou akcí s nejméně 20 sekundami na reakci a alespoň deseti prodlouženími; výjimkou je nezbytný limit, neoddělitelná událost v reálném čase nebo limit delší než 20 hodin. *Ověření:* zkontroluj časovače a expiraci na klientu i serveru a testem s řízeným časem ověř vybranou možnost; případnou výjimku dolož.
 
 ## Validace a oprava chyb
 
 Serverová validace vstupů viz [Bezpečnost](08-bezpecnost.md).
 
-- [ ] Validace přijímá platné údaje očekávané cílové skupiny. Neodmítá jméno kvůli diakritice či apostrofu ani podporovaný telefonní formát kvůli mezerám. *Ověření:* projdi validační pravidla a otestuj reprezentativní platné varianty; omezení na konkrétní zemi nebo formát musí odpovídat skutečnému účelu formuláře.
+- [ ] [web] Validace přijímá platné údaje očekávané cílové skupiny. Neodmítá jméno kvůli diakritice či apostrofu ani podporovaný telefonní formát kvůli mezerám. *Ověření:* projdi validační pravidla a otestuj reprezentativní platné varianty; omezení na konkrétní zemi nebo formát musí odpovídat skutečnému účelu formuláře.
 
-- [ ] Každá validační chyba určuje problém a způsob opravy u příslušného pole. Chyba je s polem programově propojená a nesděluje ji pouze červený rámeček. *Ověření (prohlížeč):* vyvolej chyby a zkontroluj text, umístění, přístupný popis a stav neplatného pole.
+- [ ] [web] Každá validační chyba je textově popsaná u příslušného pole a programově s ním propojená. Nabízí známý způsob opravy, pokud tím neohrozí bezpečnost nebo účel formuláře; samotný červený rámeček nestačí. *Ověření (prohlížeč):* vyvolej chyby a zkontroluj text, umístění, přístupný popis a stav neplatného pole; případné vynechání návodu na opravu odůvodni.
 
-- [ ] Po neúspěšném odeslání je cesta k chybám dostupná klávesnicí. Použij například fokus na první chybné pole nebo souhrn chyb s odkazy na pole. *Ověření (prohlížeč):* odešli neplatný formulář, zjisti polohu fokusu a oprav všechny chyby bez myši.
+- [ ] [web] Po neúspěšném odeslání je cesta k chybám dostupná klávesnicí. Použij například fokus na první chybné pole nebo souhrn chyb s odkazy na pole. *Ověření (prohlížeč):* odešli neplatný formulář, zjisti polohu fokusu a oprav všechny chyby bez myši.
 
-- [ ] Po validační nebo přenosové chybě zůstávají běžné vyplněné údaje zachované. Výjimky pro citlivé údaje nebo znovuvýběr souboru musí být odůvodněné a vysvětlené. *Ověření (prohlížeč):* vyplň formulář, vyvolej validační chybu a následně chybu přenosu a porovnej hodnoty před a po chybě.
+- [ ] [web] Po validační nebo přenosové chybě zůstávají běžné vyplněné údaje zachované. Výjimky pro citlivé údaje nebo znovuvýběr souboru musí být odůvodněné a vysvětlené. *Ověření (prohlížeč):* vyplň formulář, vyvolej validační chybu a následně chybu přenosu a porovnej hodnoty před a po chybě.
 
-- [ ] Když podání vytváří právní závazek, finanční transakci nebo závažnou změnu uživatelských dat: existuje ochrana před chybným potvrzením. Podání lze vrátit, chyby zkontrolovat a opravit, nebo údaje před dokončením zkontrolovat, upravit a potvrdit podle WCAG 3.3.4. *Ověření (prohlížeč):* na testovacích datech zadej chybný údaj a ověř dostupnou cestu opravy nebo vrácení operace.
+- [ ] [web] Když podání vytváří právní závazek, provádí finanční transakci, mění či maže uložená data ovládaná uživatelem nebo odesílá odpovědi testu: existuje ochrana před chybným potvrzením podle WCAG 3.3.4. Stačí jedna možnost: podání lze vrátit; zadané údaje se kontrolují na vstupní chyby a chyby lze opravit; nebo lze údaje před dokončením zkontrolovat, upravit a potvrdit. *Ověření (prohlížeč):* na testovacích datech zadej chybný údaj a ověř dostupnou cestu opravy nebo vrácení operace; u mazání ověř možnost obnovy nebo potvrzení rozsahu před smazáním.
 
 ## Odeslání a potvrzení
 
-- [ ] Během odesílání je zřejmé, že požadavek probíhá, a po jeho skončení je zřejmý výsledek. Samotná animace bez sdělení stavu nestačí. *Ověření (prohlížeč):* zpomal odpověď endpointu a projdi čekání, úspěch i chybu.
+- [ ] [web] Během odesílání je zřejmé, že požadavek probíhá, a po jeho skončení je zřejmý výsledek. Samotná animace bez sdělení stavu nestačí; dynamické stavové hlášky, které nepřebírají fokus, jsou programově dostupné asistivním technologiím podle WCAG 4.1.3. *Ověření (prohlížeč):* zpomal odpověď endpointu a projdi čekání, úspěch i chybu; u dynamických hlášek zkontroluj odpovídající role nebo vlastnosti v accessibility tree.
 
-- [ ] Hláška o úspěchu odpovídá skutečně potvrzenému výsledku backendu. Přijetí požadavku ke zpracování není potvrzení doručeného e-mailu ani dokončené rezervace. *Ověření:* sleduj podmínku zobrazení hlášky a u testovacího podání ji porovnej s odpovědí API a výsledným záznamem nebo přijatou úlohou; HTTP 202 posuzuj jako přijetí ke zpracování.
+- [ ] [web] Hláška o úspěchu odpovídá skutečně potvrzenému výsledku backendu. Přijetí požadavku ke zpracování není potvrzení doručeného e-mailu ani dokončené rezervace. *Ověření:* sleduj podmínku zobrazení hlášky a u testovacího podání ji porovnej s odpovědí API a výsledným záznamem nebo přijatou úlohou; HTTP 202 posuzuj jako přijetí ke zpracování.
 
-- [ ] Selhání komunikace nebo backendu nevede k falešnému úspěchu ani nekonečnému čekání. Při neznámém výsledku po přerušení spojení hláška netvrdí, že podání určitě nevzniklo. *Ověření (prohlížeč):* otestuj offline stav před odesláním, přerušení během přenosu, HTTP 4xx, HTTP 5xx a neodpovídající endpoint; porovnej chování s nastaveným timeoutem.
+- [ ] [web] Selhání komunikace nebo backendu nevede k falešnému úspěchu ani nekonečnému čekání. Při neznámém výsledku po přerušení spojení hláška netvrdí, že podání určitě nevzniklo. *Ověření (prohlížeč):* otestuj offline stav před odesláním, přerušení během přenosu, HTTP 4xx, HTTP 5xx a neodpovídající endpoint; porovnej chování s nastaveným timeoutem.
 
-- [ ] Při neúspěšném podání je uveden konkrétní další postup. Může to být oprava údaje, pozdější opakování, kontrola stavu podání nebo alternativní kontakt. *Ověření (prohlížeč):* vyvolej jednotlivé chybové větve a ověř, že jejich instrukce odpovídají příčině a nabízená cesta funguje.
+- [ ] [web] Při neúspěšném podání je uveden konkrétní další postup. Může to být oprava údaje, pozdější opakování, kontrola stavu podání nebo alternativní kontakt. *Ověření (prohlížeč):* vyvolej jednotlivé chybové větve a ověř, že jejich instrukce odpovídají příčině a nabízená cesta funguje.
 
-- [ ] Když opakované podání může vytvořit duplicitní rezervaci, objednávku nebo jinou škodlivou operaci: backend umí stejné podání bezpečně rozpoznat. Vypnutí tlačítka v prohlížeči samo nestačí. *Ověření:* integračním testem zopakuj stejné podání i po simulované ztrátě odpovědi a ověř jediný obchodní výsledek.
+- [ ] [malá] Když opakované podání může vytvořit duplicitní rezervaci, objednávku nebo jinou škodlivou operaci: backend umí stejné podání bezpečně rozpoznat. Vypnutí tlačítka v prohlížeči samo nestačí. *Ověření:* integračním testem zopakuj stejné podání i po simulované ztrátě odpovědi a ověř jediný obchodní výsledek.
 
-- [ ] Když formulář nebo vložený widget posílá e-mail: doručení je ověřené z nasazeného webu až do cílové schránky. Potvrzení od odesílacího systému samo nedokazuje přítomnost zprávy ve schránce. *Ověření (člověk):* bez přihlášení provozovatele odešli označené testovací podání a v cílové schránce dohledáš stejný obsah; když proces slibuje potvrzení návštěvníkovi, ověř i jeho doručení.
+- [ ] [web] Když formulář nebo vložený widget posílá e-mail: doručení je ověřené z nasazeného webu až do cílové schránky. Potvrzení od odesílacího systému samo nedokazuje přítomnost zprávy ve schránce. *Ověření (člověk):* bez přihlášení provozovatele odešli označené testovací podání a v cílové schránce dohledáš stejný obsah; když proces slibuje potvrzení návštěvníkovi, ověř i jeho doručení.
 
 ## Ochrana proti spamu
 
 Serverový limit četnosti podání viz [Bezpečnost](08-bezpecnost.md).
 
-- [ ] Když odeslání vyžaduje anti-bot token: jeho platnost kontroluje backend. Pouhá přítomnost widgetu nebo tokenu v požadavku není důkaz úspěšné kontroly. *Ověření:* testem endpointu ověř odmítnutí chybějícího, neplatného a podle použitého protokolu expirovaného či opakovaně použitého tokenu.
+- [ ] [web] Když odeslání vyžaduje anti-bot token: jeho platnost kontroluje backend. Pouhá přítomnost widgetu nebo tokenu v požadavku není důkaz úspěšné kontroly. *Ověření:* testem endpointu ověř odmítnutí chybějícího, neplatného a podle použitého protokolu expirovaného či opakovaně použitého tokenu.
 
-- [ ] Když používáš interaktivní CAPTCHA: existuje přístupná cesta dokončení bez stejné smyslové nebo kognitivní překážky. Alternativní varianta stejného obrázkového úkolu tuto podmínku neřeší. *Ověření (člověk):* se čtečkou a bez myši dokonči podání přes dostupnou alternativu; ověř i praktickou použitelnost případného náhradního kontaktu.
+- [ ] [web] Když používáš interaktivní CAPTCHA: existuje přístupná cesta dokončení bez stejné smyslové nebo kognitivní překážky. Alternativní varianta stejného obrázkového úkolu tuto podmínku neřeší. *Ověření (člověk):* se čtečkou a bez myši dokonči podání přes dostupnou alternativu; ověř i praktickou použitelnost případného náhradního kontaktu.
 
-- [ ] Když používáš honeypot nebo kontrolu rychlosti vyplnění: neblokují běžné vyplnění ani asistivní technologie. Rychlé doplnění uložených údajů samo neprokazuje bota. *Ověření (prohlížeč):* zkontroluj nepřítomnost honeypotu v běžném pořadí fokusu a accessibility tree a odešli formulář po automatickém doplnění údajů.
+- [ ] [web] Když používáš honeypot nebo kontrolu rychlosti vyplnění: neblokují běžné vyplnění ani asistivní technologie. Rychlé doplnění uložených údajů samo neprokazuje bota. *Ověření (prohlížeč):* zkontroluj nepřítomnost honeypotu v běžném pořadí fokusu a accessibility tree a odešli formulář po automatickém doplnění údajů.
 
 ## Vložené mapy, kalendáře a další widgety
 
 Rezervace prostoru a odložené načítání viz [Rychlost](03-rychlost.md), souhlas před načtením viz [Právo a analytika](07-pravo-a-analytika.md).
 
-- [ ] Když je obsah vložený přes iframe: rám má výstižný přístupný název. Název rozlišuje například mapu provozovny od rezervačního kalendáře. *Ověření:* projdi `iframe` v DOM a jejich `title` nebo jiné přístupné pojmenování; zkontroluj i rámy vložené dodatečně skriptem.
+- [ ] [web] Když je obsah vložený přes iframe: rám má výstižný přístupný název. Název rozlišuje například mapu provozovny od rezervačního kalendáře. *Ověření:* projdi `iframe` v DOM a jejich `title` nebo jiné přístupné pojmenování; zkontroluj i rámy vložené dodatečně skriptem.
 
-- [ ] Podstatná informace nebo akce zůstává dostupná i při nenačtení embedu. U mapy to může být textová adresa, u rezervace funkční samostatná stránka nebo náhradní kontakt. *Ověření (prohlížeč):* zablokuj domény widgetu a ověř dostupnost alternativy mimo jeho rám; samotnou událost `load` iframe nepovažuj za důkaz funkčnosti.
+- [ ] [web] Podstatná informace nebo akce zůstává dostupná i při nenačtení embedu. U mapy to může být textová adresa, u rezervace funkční samostatná stránka nebo náhradní kontakt. *Ověření (prohlížeč):* zablokuj načtení widgetu v rámci stránky a ověř alternativu mimo jeho rám; samostatně simuluj výpadek jeho služby a ověř dostupnost podstatné informace nebo náhradního postupu, který na této službě nezávisí; samotnou událost `load` iframe nepovažuj za důkaz funkčnosti.
 
-- [ ] Když widget závisí na cookies nebo úložišti třetí strany: při jejich blokování funguje nebo nabídne použitelnou alternativní cestu. Návštěvník nesmí zůstat v neřešitelné přihlašovací či potvrzovací smyčce. *Ověření (prohlížeč):* v čisté relaci se zapnutým blokováním cookies třetích stran projdi celý proces včetně přesměrování; zaznamenej prohlížeč, verzi a nastavení.
+- [ ] [web] Když widget závisí na cookies nebo úložišti třetí strany: při jejich blokování funguje nebo nabídne použitelnou alternativní cestu. Návštěvník nesmí zůstat v neřešitelné přihlašovací či potvrzovací smyčce. *Ověření (prohlížeč):* v čisté relaci se zapnutým blokováním cookies třetích stran projdi celý proces včetně přesměrování; zaznamenej prohlížeč, verzi a nastavení.
 
-- [ ] Když kalendář nebo rezervace pracuje s konkrétním časem: widget a potvrzení označují stejný okamžik. Převod mezi časovými zónami nesmí změnit skutečný termín. *Ověření (prohlížeč):* porovnej vybraný termín s potvrzením při nastavení různých časových zón a pro letní i zimní období; u exportu iCalendar zkontroluj UTC nebo odpovídající časovou zónu.
+- [ ] [web] Když kalendář nebo rezervace pracuje s konkrétním časem: widget a potvrzení označují stejný okamžik. Převod mezi časovými zónami nesmí změnit skutečný termín. *Ověření (prohlížeč):* porovnej vybraný termín s potvrzením při nastavení různých časových zón a pro letní i zimní období; u exportu iCalendar zkontroluj UTC nebo odpovídající časovou zónu.
 
 ## Vložená videa
 
-- [ ] Když předtočené video se zvukem předává informace: má synchronizované titulky zachycující řeč i významové zvuky. Výjimku podle WCAG 1.2.2 posuzuj jen u jasně označené mediální alternativy existujícího textu. *Ověření (člověk):* přehraj video bez zvuku a porovnej titulky s původní zvukovou stopou; samotná existence automatických titulků nedokazuje jejich správnost.
+- [ ] [web] Když předtočené video se zvukem předává informace: má synchronizované titulky zachycující řeč i významové zvuky. Výjimku podle WCAG 1.2.2 posuzuj jen u jasně označené mediální alternativy existujícího textu. *Ověření (člověk):* přehraj video bez zvuku a porovnej titulky s původní zvukovou stopou; samotná existence automatických titulků nedokazuje jejich správnost.
 
-- [ ] Když předtočené video obsahuje podstatnou vizuální informaci, kterou zvuk nesděluje: je tato informace dostupná také zvukem. Pro WCAG 1.2.5 na úrovni AA samotný textový přepis nenahrazuje audio description. *Ověření (člověk):* porovnej obraz se zvukem a ověř, že důležité texty, děje a výsledky jsou vyslovené v hlavní stopě nebo dostupné ve zvukovém popisu.
+- [ ] [web] Když předtočené video obsahuje podstatnou vizuální informaci, kterou zvuk nesděluje, a nejde o jasně označenou mediální alternativu existujícího textu: tato informace zazní v hlavní stopě nebo ve zvukovém popisu. U videa zcela bez zvuku může podle WCAG 1.2.1 stačit odpovídající textová alternativa; u videa se zvukem samotný textový přepis požadavek WCAG 1.2.5 na úrovni AA nesplní. *Ověření (člověk):* porovnej obraz se zvukem a ověř, že důležité texty, děje a výsledky jsou vyslovené v hlavní stopě nebo dostupné ve zvukovém popisu; u videa zcela bez zvuku ověř úplnost a pořadí informací v textové alternativě, pokud je použita; případnou výjimku dolož.
 
 ## Zdroje
 
@@ -91,12 +91,14 @@ Rezervace prostoru a odložené načítání viz [Rychlost](03-rychlost.md), sou
 - [WCAG 2.2.1: Timing Adjustable](https://www.w3.org/WAI/WCAG22/Understanding/timing-adjustable.html) - časové limity a přesné podmínky prodloužení.
 - [OWASP: Input Validation](https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html) - serverová validace a přijímání legitimních vstupů.
 - [W3C WAI: User Notifications](https://www.w3.org/WAI/tutorials/forms/notifications/) - zpětná vazba a propojení chyb s poli.
+- [WCAG 3.3.3: Error Suggestion](https://www.w3.org/WAI/WCAG22/Understanding/error-suggestion.html) - známé způsoby opravy a výjimky kvůli bezpečnosti nebo účelu obsahu.
 - [GOV.UK: Error summary](https://design-system.service.gov.uk/components/error-summary/) a [Error message](https://design-system.service.gov.uk/components/error-message/) - navigace k chybám a zachování odpovědí.
 - [WCAG 3.3.4: Error Prevention](https://www.w3.org/WAI/WCAG22/Understanding/error-prevention-legal-financial-data.html) - prevence závažných chyb.
 - [WCAG 4.1.3: Status Messages](https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html) - oznamování dynamických stavů.
 - [RFC 9110, oddíl 15.3.3](https://www.rfc-editor.org/rfc/rfc9110.html#section-15.3.3) a [oddíl 9.2.2](https://www.rfc-editor.org/rfc/rfc9110.html#section-9.2.2) - přijetí ke zpracování a bezpečnost opakovaných požadavků.
 - [MDN: fetch](https://developer.mozilla.org/en-US/docs/Web/API/Window/fetch) - rozdíl mezi síťovou chybou a HTTP chybovou odpovědí.
 - [GOV.UK: Confirmation pages](https://design-system.service.gov.uk/patterns/confirmation-pages/) - potvrzení a další postup.
+- [GOV.UK: There is a problem with the service pages](https://design-system.service.gov.uk/patterns/problem-with-the-service-pages/) - další postup a alternativní kontakt při selhání služby.
 - [RFC 5321, oddíly 4.2.5 a 6.1](https://www.rfc-editor.org/rfc/rfc5321.html) - přijetí e-mailu a následná selhání doručení.
 - [OWASP: Bot Management and Anti-Automation](https://cheatsheetseries.owasp.org/cheatsheets/Bot_Management_and_Anti-Automation_Cheat_Sheet.html) - vrstvená ochrana, rate limiting a kontrola anti-bot tokenů.
 - [W3C: Inaccessibility of CAPTCHA](https://www.w3.org/TR/turingtest/) - bariéry CAPTCHA a alternativy; jde o informativní Group Draft Note, nikoli normativní standard.
@@ -107,4 +109,5 @@ Rezervace prostoru a odložené načítání viz [Rychlost](03-rychlost.md), sou
 - [ÚOOÚ: Cookies, otázky a odpovědi](https://uoou.gov.cz/verejnost/qa-otazky-a-odpovedi/cookies) - předchozí souhlas, technické výjimky a podobné technologie; stav 10/2026.
 - [RFC 5545, oddíl 3.3.5](https://www.rfc-editor.org/rfc/rfc5545.html#section-3.3.5) - časové zóny a rozdíl mezi pevným a „floating“ časem.
 - [W3C WAI: Captions/Subtitles](https://www.w3.org/WAI/media/av/captions/) a [Description of Visual Information](https://www.w3.org/WAI/media/av/description/) - titulky a zvukový popis.
+- [WCAG 1.2.1: Audio-only and Video-only](https://www.w3.org/TR/WCAG22/#audio-only-and-video-only-prerecorded) a [1.2.5: Audio Description](https://www.w3.org/TR/WCAG22/#audio-description-prerecorded) - rozdílné požadavky na video zcela bez zvuku a video se zvukem.
 - [WCAG 1.4.2: Audio Control](https://www.w3.org/WAI/WCAG22/Understanding/audio-control.html) - automatický zvuk delší než 3 sekundy.
