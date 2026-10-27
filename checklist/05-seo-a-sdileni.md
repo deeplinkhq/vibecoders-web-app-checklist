@@ -78,20 +78,11 @@ Před kontrolou rozliš URL určené k indexaci, jejich duplicitní varianty a s
 
 - [ ] Když firma značí hodnocení sebe sama jako `LocalBusiness` nebo `Organization`: nepočítá s hvězdičkami z vlastních referencí jako s podporovaným review snippetem Googlu. Omezení platí i pro hodnocení vložené cizím widgetem, stav 10/2026. [G16] *Ověření:* zjisti hodnocenou entitu a kdo ovládá stránku; odděl pravdivost recenzí od způsobilosti k rozšířenému výsledku.
 
-## AI vyhledávání a AI crawlery
+## AI crawlery
 
-- [ ] Když provozovatel řeší použití obsahu AI systémy: má oddělené rozhodnutí pro vyhledávání, načítání na žádost uživatele a trénink. Jeden univerzální přepínač pro všechny provozovatele neexistuje. [O1] [A1] [G18] [S4] *Ověření:* porovnej deklarovaný záměr s pravidly pro konkrétní tokeny v tabulce níže; nejasný záměr označ jako otázku.
-
-| Provozovatel | Relevantní rozlišení, stav 10/2026 |
-| --- | --- |
-| OpenAI | `OAI-SearchBot` slouží vyhledávání, `GPTBot` sběru pro možné trénování. `ChatGPT-User` načítá obsah při některých uživatelských akcích a pravidla `robots.txt` se na něj podle dokumentace nemusejí vztahovat. [O1] |
-| Anthropic | `Claude-SearchBot` slouží vyhledávání, `ClaudeBot` možnému trénování a `Claude-User` načítání na žádost uživatele. [A1] |
-| Google | `Googlebot` obsluhuje Search. `Google-Extended` řídí další použití popsaná v dokumentaci včetně tréninku a vybraného groundingu; nenahrazuje nastavení účasti v AI funkcích Search. [G18] [G19] |
-| Seznam | Pro zákaz použití v AI odpovědích dokumentuje `Seznam-Extended` a také tokeny `AI` a `MachineLearning`. Tyto zákazy nelze označovat pouze jako zákaz tréninku. [S4] |
+Rozhodnutí o účasti v AI vyhledávání a jednotlivé AI crawlery jsou v [AI vyhledávání a agenti](16-ai-vyhledavani-a-agenti.md). Tady zůstává jen technická kontrola přístupu.
 
 - [ ] Když má být web dostupný vybranému AI vyhledávači: jeho vyhledávací crawler není nechtěně blokovaný pravidly ani ochranou serveru. Povolení crawlera nezaručuje citaci. [O1] [A1] *Ověření:* zkontroluj účinná pravidla, konfiguraci ochrany a logy skutečných návštěv; GET s podvrženým user-agentem používej jen jako pomocnou diagnostiku.
-
-- [ ] Když má web získávat návštěvy z AI funkcí Google Search: nastavení „Search generative AI“ jeho účast nevylučuje. Google uvádí celosvětovou dostupnost tohoto ovládání od 31. 8. 2026. [G19] *Ověření (člověk):* v Search Console otevři nastavení příslušné property a ověř účinnou volbu včetně dědění z nadřazené property.
 
 - [ ] Když má být obsah dostupný jako podklad pro AI odpovědi Googlu: pravidla náhledů neomezují zamýšlené použití. Zkontroluj zejména `nosnippet`, `max-snippet` a `data-nosnippet`; záměrné omezení není chyba. [G17] *Ověření:* porovnej pravidla v HTTP odpovědi a HTML s konkrétním textem určeným k použití a se záměrem provozovatele.
 

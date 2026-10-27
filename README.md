@@ -36,6 +36,7 @@ Opravuj pak po kategoriích, ne všechno naráz. Po každém kole nech agenta ko
 | [Provoz](checklist/13-provoz.md) | čehokoli, co má běžet déle než týden |
 | [AI funkce v aplikaci](checklist/14-ai-funkce.md) | aplikace, která volá jazykový model |
 | [AI nastavení projektu](checklist/15-ai-nastaveni-projektu.md) | každého projektu, na kterém pracuje AI agent |
+| [AI vyhledávání a agenti](checklist/16-ai-vyhledavani-a-agenti.md) | webu, který chce být zdrojem AI odpovědí nebo použitelný pro AI agenty |
 
 ## Stav
 
