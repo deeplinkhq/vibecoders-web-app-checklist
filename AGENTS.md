@@ -12,8 +12,17 @@ Veřejný checklist pro weby a aplikace postavené s AI agentem. Je psaný hlavn
 ## Formát položky
 
 ```
-- [ ] Krátké tvrzení, které jde ověřit. Proč na tom záleží, nejvýš dvě věty. *Ověření:* jak to agent zkontroluje.
+- [ ] [veřejná] Krátké tvrzení, které jde ověřit. Proč na tom záleží, nejvýš dvě věty. *Ověření:* jak to agent zkontroluje.
 ```
+
+- **Úroveň** v hranatých závorkách na začátku položky je nejnižší úroveň projektu, od které položka platí. Platí pro ni a všechny vyšší. Rozhoduje to, co se stane, když se věc pokazí, ne počet řádků kódu. Když váháš, dej nižší úroveň jen tehdy, když by chybějící věc i na ní způsobila reálnou škodu.
+
+| Úroveň | Co to je | Když se to pokazí |
+| --- | --- | --- |
+| `web` | prezentační web, landing page, blog, případně kontaktní formulář nebo vložená rezervace. Bez uživatelských účtů. | nefunguje web nebo formulář |
+| `malá` | aplikace s přihlášením nebo daty pro známé uživatele: autor, rodina, firma, desítky lidí. Bez plateb od cizích lidí. | výpadek na pár hodin nevadí, data se obnoví ze zálohy |
+| `veřejná` | registrují se cizí lidé, aplikace drží jejich osobní data nebo přijímá platby | únik dat, ztráta peněz, právní problém |
+| `velká` | mnoho uživatelů nebo tým, časté vydávání, výpadek stojí peníze nebo zákazníky | ztráta tržeb a zákazníků |
 
 - **Ověření** popisuje, jak položku zkontroluje agent, který projekt audituje. Přednost má způsob, který agent spustí sám: příkaz, API měřicího nástroje, čtení kódu. Když potřebuje prohlížeč, napiš *Ověření (prohlížeč):*. Když to bez člověka nejde (účet pod přihlášením, reálný telefon, úsudek), napiš *Ověření (člověk):* a co přesně má člověk udělat.
 
