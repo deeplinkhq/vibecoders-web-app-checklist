@@ -17,6 +17,8 @@ Když agent neumí číst web, naklonuj si repo vedle projektu a odkaž ho na sl
 
 Opravuj pak po kategoriích, ne všechno naráz. Po každém kole nech agenta kontrolu zopakovat.
 
+Lidský výtah toho nejdůležitějšího je v [PREHLED.md](PREHLED.md).
+
 ## Kategorie
 
 | Kategorie | Týká se |
