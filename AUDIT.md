@@ -12,16 +12,16 @@ Než otevřeš první kategorii, projdi projekt (soubory, konfiguraci, nasazenou
 - **Kdo to bude používat:** jen autor, pár lidí, nebo cizí lidé.
 - **Jestli jsou v projektu osobní data cizích lidí nebo peníze.**
 - **Jak dlouho to má žít** a co se stane, když to spadne nebo se ztratí data.
-- **Úroveň projektu** podle tabulky níž.
+- **Které běžné podmínky platí.** Pro každou odpověz ano nebo ne:
+  - projekt má přihlášení,
+  - projekt ukládá data,
+  - projekt zpracovává osobní údaje,
+  - projekt drží osobní údaje cizích lidí,
+  - projekt přijímá platby,
+  - na projektu pracuje víc lidí nebo se nasazuje často,
+  - výpadek nebo ztráta dat stojí peníze nebo zákazníky.
 
-| Úroveň | Co to je | Když se to pokazí |
-| --- | --- | --- |
-| `web` | prezentační web, landing page, blog, případně kontaktní formulář nebo vložená rezervace. Bez uživatelských účtů. | nefunguje web nebo formulář |
-| `malá` | aplikace s přihlášením nebo daty pro známé uživatele: autor, rodina, firma, desítky lidí. Bez plateb od cizích lidí. | výpadek na pár hodin nevadí, data se obnoví ze zálohy |
-| `veřejná` | registrují se cizí lidé, aplikace drží jejich osobní data nebo přijímá platby | únik dat, ztráta peněz, právní problém |
-| `velká` | mnoho uživatelů nebo tým, časté vydávání, výpadek stojí peníze nebo zákazníky | ztráta tržeb a zákazníků |
-
-Co z projektu nezjistíš, se zeptej. Všechno najednou v jedné zprávě, ne po jedné otázce. Úroveň napiš uživateli na začátek reportu, ať ji může opravit.
+Co z projektu nezjistíš, se zeptej. Všechno najednou v jedné zprávě, ne po jedné otázce. Odpovědi na podmínky napiš uživateli na začátek reportu, ať je může opravit.
 
 ## 2. Vyber kategorie
 
@@ -29,7 +29,7 @@ Každý soubor v `checklist/` má nahoře řádek **Týká se**. Kategorie, kter
 
 ## 3. Projdi položky
 
-Každá položka má na začátku úroveň, od které platí (`[web]`, `[malá]`, `[veřejná]`, `[velká]`). Položky nad úrovní projektu přeskoč a nevypisuj, v reportu uveď jen jejich počet. Položka, která po úrovni začíná „Když…", platí jen za dané podmínky. Jak položku zkontrolovat, říká poznámka *Ověření:* na jejím konci. Co jde, ověř sám (příkaz, API, kód). Položky s *Ověření (prohlížeč):* ověř, když umíš ovládat prohlížeč, jinak je dej do „Ověř ručně". Položky s *Ověření (člověk):* dej rovnou do „Ověř ručně".
+Položka bez podmínky platí vždy. Položka, která začíná „Když…:“, platí jen za dané podmínky. Položky, jejichž podmínka nesedí, přeskoč a nevypisuj, v reportu uveď jen jejich počet. Když nevíš, jestli podmínka sedí, dej položku do „Otázka“. Jak položku zkontrolovat, říká poznámka *Ověření:* na jejím konci. Co jde, ověř sám (příkaz, API, kód). Položky s *Ověření (prohlížeč):* ověř, když umíš ovládat prohlížeč, jinak je dej do „Ověř ručně". Položky s *Ověření (člověk):* dej rovnou do „Ověř ručně".
 
 U každé položky urči stav:
 
