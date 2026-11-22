@@ -12,7 +12,7 @@
 
 - [ ] Landing page má 7 až 9 sekcí, ne víc. Každá sekce si musí zasloužit další scroll.
 - [ ] Pořadí, které funguje: úvod, problém, jak to funguje, co nabízíš, důvěra, kdo za tím stojí, otázky a námitky, závěrečná výzva k akci.
-- [ ] Když jde o službu, kterou lidé neznají: sekce „Jak to funguje" v několika krocích je vysoko. Hlavní bariéra je nepochopení, ne cena.
+- [ ] Když jde o službu, kterou lidé neznají: sekce „Jak to funguje“ v několika krocích je vysoko. Hlavní bariéra je nepochopení, ne cena.
 
 ## Úvodní sekce (hero)
 
@@ -26,15 +26,15 @@
 
 - [ ] 6 až 12 slov. Kratší nesdělí hodnotu, delší se nepřečte za dvě sekundy.
 - [ ] Konkrétní, ne aspirativní. Test: řekl by tuhle větu člověk nahlas? [Psaní pro web NN/g]
-- [ ] Žádné „inovativní", „revoluční", „měníme způsob, jakým…". [Psaní pro web NN/g]
+- [ ] Žádné „inovativní“, „revoluční“, „měníme způsob, jakým…“. [Psaní pro web NN/g]
 
 ## Výzva k akci (CTA)
 
-- [ ] Jeden cíl, ale 3 až 5 opakování téhož tlačítka: v úvodu, po „jak to funguje", po sekci důvěry, na konci, na mobilu přilepené dole.
-- [ ] Text tlačítka dokončuje větu „Chci…", není to povel. „Chci se přidat", ne „Odeslat".
-- [ ] Pod tlačítkem stojí, co se stane potom. „Zdarma a nezávazně, ozveme se do dvou dnů." [Get Started NN/g]
+- [ ] Jeden cíl, ale 3 až 5 opakování téhož tlačítka: v úvodu, po „jak to funguje“, po sekci důvěry, na konci, na mobilu přilepené dole.
+- [ ] Text tlačítka dokončuje větu „Chci…“, není to povel. „Chci se přidat“, ne „Odeslat“.
+- [ ] Pod tlačítkem stojí, co se stane potom. „Zdarma a nezávazně, ozveme se do dvou dnů.“ [Get Started NN/g]
 - [ ] Nejvýš jedno vedlejší tlačítko a vizuálně slabší než hlavní. [Stavy tlačítek NN/g]
-- [ ] Po provedení akce vizuální konfirmace a co se stane ("Kdy odpovíme") [Stav systému NN/g]
+- [ ] Po provedení akce vizuální konfirmace a co se stane („Kdy odpovíme“) [Stav systému NN/g]
 
 ## Důvěra
 
@@ -42,7 +42,7 @@
 - [ ] Reálné číslo, i malé. Malé pravdivé číslo je věrohodnější než žádné.
 - [ ] Je vidět, kdo za tím stojí, s fotkou a jménem. [Fotky NN/g]
 - [ ] Fotky reálných věcí, lidí a míst, ne fotobanka. [Fotky NN/g]
-- [ ] Žádné vymyšlené reference, recenze ani „1000+ spokojených zákazníků". Smyšlené recenze jsou v ČR klamavá reklama. Vždy vycházet z pravdivých dat která mohu podložit [Recenze ČOI], [Zákon o ochraně spotřebitele]
+- [ ] Žádné vymyšlené reference, recenze ani „1000+ spokojených zákazníků“. Smyšlené recenze jsou v ČR klamavá reklama. Vždy vycházet z pravdivých dat která mohu podložit [Recenze ČOI], [Zákon o ochraně spotřebitele]
 - [ ] U referencí a recenzí uvádět autora, odkaz na web/LinkedIn - pouze s jeho souhlasem
 
 ## Námitky
@@ -50,7 +50,7 @@
 - [ ] FAQ - Otázky a odpovědi: 5 až 8 otázek formulovaných jazykem návštěvníka odpovídající na nejčastější otázky, které by zákazník mohl mít [FAQ NN/g]
 - [ ] Cena je veřejná nebo je uvedeno, jak ji zákazník získá. Chybějící cena je nejčastější důvod odchodu. Chybějící cena při nabízení koncovému zákazníkovi (ne firmě) je protiprávní [Důvěryhodnost NN/g], [Informace prodejce ČOI]
 - [ ] Je napsané i to, co neděláš. Vymezení zvyšuje důvěryhodnost.
-- [ ] Když jde o službu vázanou na místo: lokalita je uvedená konkrétně, čtvrtí nebo ulicemi, ne jen „Praha".
+- [ ] Když jde o službu vázanou na místo: lokalita je uvedená konkrétně, čtvrtí nebo ulicemi, ne jen „Praha“.
 
 ## Kontakty a údaje
 

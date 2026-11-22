@@ -29,7 +29,7 @@ Každý soubor v `checklist/` má nahoře řádek **Týká se**. Kategorie, kter
 
 ## 3. Projdi položky
 
-Položka bez podmínky platí vždy. Položka, která začíná „Když…:“, platí jen za dané podmínky. Položky, jejichž podmínka nesedí, přeskoč a nevypisuj, v reportu uveď jen jejich počet. Když nevíš, jestli podmínka sedí, dej položku do „Otázka“. Jak položku zkontrolovat, říká poznámka *Ověření:* na jejím konci. Co jde, ověř sám (příkaz, API, kód). Položky s *Ověření (prohlížeč):* ověř, když umíš ovládat prohlížeč, jinak je dej do „Ověř ručně". Položky s *Ověření (člověk):* dej rovnou do „Ověř ručně".
+Položka bez podmínky platí vždy. Položka, která začíná „Když…:“, platí jen za dané podmínky. Položky, jejichž podmínka nesedí, přeskoč a nevypisuj, v reportu uveď jen jejich počet. Když nevíš, jestli podmínka sedí, dej položku do „Otázka“. Jak položku zkontrolovat, říká poznámka *Ověření:* na jejím konci. Co jde, ověř sám (příkaz, API, kód). Položky s *Ověření (prohlížeč):* ověř, když umíš ovládat prohlížeč, jinak je dej do „Ověř ručně“. Položky s *Ověření (člověk):* dej rovnou do „Ověř ručně“.
 
 U každé položky urči stav:
 
@@ -37,7 +37,7 @@ U každé položky urči stav:
 - **Chybí:** nesplněno.
 - **Ověř ručně:** z projektu se to zjistit nedá (účet u registrátora, Google Business Profile, nastavení v dashboardu). Napiš, kde a jak to člověk ověří.
 - **Nerelevantní:** jednou větou proč.
-- **Otázka:** nevíš, jestli to uživatel chce řešit (analytika, newsletter, dark mode, platby). Nedávej to do „Chybí", zeptej se.
+- **Otázka:** nevíš, jestli to uživatel chce řešit (analytika, newsletter, dark mode, platby). Nedávej to do „Chybí“, zeptej se.
 
 Ověřuj, neodhaduj. Když web běží, použij `curl` nebo prohlížeč. Kontrast spočítej, ne odhadni. Čísla v položkách (velikosti, limity) ber jako vodítko, ne jako zákon.
 
