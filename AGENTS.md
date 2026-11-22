@@ -35,7 +35,7 @@ Veřejný checklist pro weby a aplikace postavené s AI agentem. Je psaný hlavn
 
 - **Ověření** popisuje, jak položku zkontroluje agent, který projekt audituje. Přednost má způsob, který agent spustí sám: příkaz, API měřicího nástroje, čtení kódu. Když potřebuje prohlížeč, napiš *Ověření (prohlížeč):*. Když to bez člověka nejde (účet pod přihlášením, reálný telefon, úsudek), napiš *Ověření (člověk):* a co přesně má člověk udělat.
 
-- **Jedna položka, jedna ověřitelná věc.** „Web je rychlý" není položka, „LCP pod 2,5 s" je.
+- **Jedna položka, jedna ověřitelná věc.** „Web je rychlý“ není položka, „LCP pod 2,5 s“ je.
 - **Každý soubor** má pod nadpisem řádek `**Týká se:**`, podle kterého agent kategorii vybírá nebo přeskakuje.
 - **Práh pro rozhodnutí.** Kde existuje uznávaná hodnota, uveď ji. Běžnou praxi uveď jako orientační hodnotu.
 - **Čísla a pravidla, která se mění** (limity služeb, ceny, pravidla Googlu), mají u sebe datum, k jakému platí.
@@ -46,13 +46,13 @@ Veřejný checklist pro weby a aplikace postavené s AI agentem. Je psaný hlavn
 ## Psaní
 
 - Čeština, tykání, krátké věty, konkrétní čísla. Anglické termíny (agent, prompt, CDN) se nepřekládají.
-- Nikdy dlouhá pomlčka (em dash ani en dash), jen spojovník „-". Rozsahy psát „2 až 6".
-- České uvozovky „…".
+- Nikdy dlouhá pomlčka (em dash ani en dash), jen spojovník „-“. Rozsahy psát „2 až 6“.
+- České uvozovky „…“.
 - Bez marketingových slov (revoluční, průlomový, game-changer).
 
 ## Co sem nepatří
 
-- **Míň je líp.** Nedoplňuj položky „pro úplnost". Každá položka musí mít důvod, proč ji lidé reálně zapomínají nebo dělají špatně.
+- **Míň je líp.** Nedoplňuj položky „pro úplnost“. Každá položka musí mít důvod, proč ji lidé reálně zapomínají nebo dělají špatně.
 - Nic interního: klientské projekty, interní adresy, odkazy do privátních rep Deeplink HQ.
 - Top vychytávky, které nechceme dávat ven, patří do privátního repa, ne sem.
 - Znaky vibe coded vzhledu do hloubky budou mít vlastní repo. Tady v `02-vzhled.md` zůstává jen základ.
