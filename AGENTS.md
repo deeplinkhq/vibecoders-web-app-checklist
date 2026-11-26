@@ -56,3 +56,11 @@ Veřejný checklist pro weby a aplikace postavené s AI agentem. Je psaný hlavn
 - Nic interního: klientské projekty, interní adresy, odkazy do privátních rep Deeplink HQ.
 - Top vychytávky, které nechceme dávat ven, patří do privátního repa, ne sem.
 - Znaky vibe coded vzhledu do hloubky budou mít vlastní repo. Tady v `02-vzhled.md` zůstává jen základ.
+
+## Velké soubory do gitu nepatří
+
+Pravidlo pro všechna repa Deeplink HQ, celý popis je ve wiki: https://github.com/deeplinkhq/wiki/blob/main/large-files.md
+
+- **Soubor nad 5 MB necommituj.** Bez ohledu na velikost do gitu nepatří ani video, audio, archivy, zdrojové soubory grafiky a obrazy disků (seznam typů je v `scripts/large-files.sh`). Velké soubory a podklady patří na Disk Google do `DEEPLINK_SHOW/assets/vibecoders-web-app-checklist/`, do repa dej jen odkaz.
+- **Hlídá to git hook** `.githooks/pre-commit`. Zapíná ho Claude Code i Codex sám na začátku session (`.claude/settings.json`, `.codex/hooks.json`, Codex ho nechá jednou potvrdit v `/hooks`), bez nich jednou na klon `git config core.hooksPath .githooks`. Hook neobcházej (`--no-verify`).
+- **Výjimka** je řádek `<cesta nebo vzor> large-file-ok` v `.gitattributes`. Přidej ji jen se souhlasem člověka a commitni ji spolu se souborem.
